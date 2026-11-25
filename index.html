@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0b0f17" />
+  <title>MSNR 完整学习知识库 · 炼金术 / Arif T / KangFx / 187 案例全集</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg: #0b0f17; --bg-elev: #121826; --bg-card: #161e2e; --bg-code: #0d1320;
+      --text: #e6edf7; --text-muted: #93a1b8; --border: #243047;
+      --accent: #38bdf8; --accent-soft: rgba(56, 189, 248, 0.14);
+      --gold: #f59e0b; --gold-soft: rgba(245, 158, 11, 0.14);
+      --green: #34d399; --green-soft: rgba(52, 211, 153, 0.14);
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-code: #f1f5f9;
+      --text: #0f172a; --text-muted: #475569; --border: #e2e8f0;
+      --accent: #0284c7; --accent-soft: rgba(2, 132, 199, 0.10);
+      --gold: #d97706; --gold-soft: rgba(217, 119, 6, 0.10);
+      --green: #059669; --green-soft: rgba(5, 150, 105, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65; font-size: 15px;
+      padding: 20px 16px 60px;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      margin-bottom: 18px; flex-wrap: wrap;
+    }
+    .logo { font-weight: 800; font-size: 17px; letter-spacing: 0.2px; display: flex; align-items: center; gap: 8px; }
+    .top-actions { display: flex; gap: 8px; align-items: center; }
+    .btn {
+      border: 1px solid var(--border); background: var(--bg-card); color: var(--text);
+      border-radius: 10px; padding: 8px 13px; font-size: 13px; font-weight: 600;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .hero {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-elev));
+      border: 1px solid var(--border); border-radius: 18px; padding: 24px 24px;
+      margin-bottom: 22px;
+    }
+    .hero h1 { margin: 0 0 8px; font-size: clamp(22px, 4vw, 30px); line-height: 1.25; }
+    .hero p { margin: 0 0 14px; color: var(--text-muted); font-size: 14.5px; }
+    .stats { display: flex; flex-wrap: wrap; gap: 8px; }
+    .stat {
+      font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+    .stat.gold { background: var(--gold-soft); color: var(--gold); }
+    .stat.green { background: var(--green-soft); color: var(--green); }
+    .controls {
+      display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;
+    }
+    .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+    .tab {
+      border: 1px solid var(--border); background: var(--bg-card); color: var(--text-muted);
+      border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600;
+      cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    }
+    .tab.active { background: var(--accent); color: #071320; border-color: var(--accent); }
+    .search {
+      width: 100%; padding: 11px 14px; border-radius: 12px; font: inherit; font-size: 14.5px;
+      border: 1px solid var(--border); background: var(--bg-card); color: var(--text);
+      outline: none;
+    }
+    .search:focus { border-color: var(--accent); }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+    }
+    .v-card {
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 16px 18px; text-decoration: none; color: inherit;
+      transition: transform 0.14s ease, border-color 0.14s ease;
+    }
+    .v-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .v-card.hidden { display: none; }
+    .v-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .v-grp { font-size: 11.5px; font-weight: 700; color: var(--accent); }
+    .v-badge.hot { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--gold-soft); color: var(--gold); }
+    .v-title { margin: 0 0 6px; font-size: 16px; line-height: 1.35; color: var(--text); }
+    .v-desc { margin: 0 0 12px; font-size: 13.3px; color: var(--text-muted); flex: 1; }
+    .v-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; flex-wrap: wrap; }
+    .v-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag { font-size: 11px; padding: 2px 7px; border-radius: 6px; background: var(--bg-code); border: 1px solid var(--border); color: var(--text-muted); }
+    .v-size { font-size: 11.5px; color: var(--green); font-weight: 600; white-space: nowrap; }
+    footer { margin-top: 34px; text-align: center; font-size: 12.5px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo">📊 MSNR 完整学习知识库</div>
+    <div class="top-actions">
+      <a class="btn" href="https://github.com/wait2050/snr" target="_blank" rel="noopener">GitHub 开源仓库 ↗</a>
+      <button class="btn" onclick="toggleTheme()">明暗切换</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <h1>Malaysian SNR 全流派体系精讲与实战案例库</h1>
+    <p>全开源静态知识站（12 册完整图文精讲，总计 21.1 MB），全面适配手机端阅读：支持抽屉式目录、表格横向滑动、点击图片灯箱缩放与明暗主题同步。所有知识点均严格剥离外部流派术语、统一纽约时间，并基于原课逐行文本与真实图表截屏核验。</p>
+    <div class="stats">
+      <span class="stat">12 册单文件全自含</span>
+      <span class="stat gold">炼金术 + Arif T + KangFx 26集</span>
+      <span class="stat green">含 187 实战案例深度档案 &gt;1:10 融合</span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-filter="all">全部 (12)</button>
+      <button class="tab" data-filter="alchemy">炼金术 (4)</button>
+      <button class="tab" data-filter="arift">Arif T (2)</button>
+      <button class="tab" data-filter="kangfx">KangFx 26集 (4)</button>
+      <button class="tab" data-filter="fusion">融合 &amp; 187案例 (2)</button>
+    </div>
+    <input class="search" id="search" type="search" placeholder="搜索课程、模型或概念（如 Trapezoid QM、D1W4、OCL、10 Pip SL、PO3）..." />
+  </div>
+
+  <div class="grid" id="grid">
+<a class="v-card" href="pages/alchemy-master.html" data-group="alchemy" data-search="msnr 炼金术 · part 1–6 全套串通总纲 五大时间框架分工、方向×位置×燃料三层过滤引擎、三大入场模型决策树、风控红线与纽约时间作战 sop。 msnr 炼金术 (part 1–6) 总纲 mn→w1→d1→h4 sop 三层过滤">  <div class="v-top"><span class="v-grp">MSNR 炼金术 (Part 1–6)</span><span class="v-badge hot">总纲推荐</span></div>  <h3 class="v-title">MSNR 炼金术 · Part 1–6 全套串通总纲</h3>  <p class="v-desc">五大时间框架分工、方向×位置×燃料三层过滤引擎、三大入场模型决策树、风控红线与纽约时间作战 SOP。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">总纲</span><span class="tag">MN→W1→D1→H4</span><span class="tag">SOP</span><span class="tag">三层过滤</span></div><span class="v-size">382 KB</span></div></a>
+<a class="v-card" href="pages/alchemy-part1-3.html" data-group="alchemy" data-search="msnr 炼金术 · part 1–3 基础与关键位 折线图原则、95% snr + 5% smc 边界、五大基础关键位（rbs/sbr/qml/oc）及三层结构过滤。 msnr 炼金术 (part 1–6) part 1-3 oc qml storyline">  <div class="v-top"><span class="v-grp">MSNR 炼金术 (Part 1–6)</span></div>  <h3 class="v-title">MSNR 炼金术 · Part 1–3 基础与关键位</h3>  <p class="v-desc">折线图原则、95% SNR + 5% SMC 边界、五大基础关键位（RBS/SBR/QML/OC）及三层结构过滤。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">Part 1-3</span><span class="tag">OC</span><span class="tag">QML</span><span class="tag">Storyline</span></div><span class="v-size">574 KB</span></div></a>
+<a class="v-card" href="pages/alchemy-part4-5.html" data-group="alchemy" data-search="msnr 炼金术 · part 4–5 入场与风控 低/中/高风险入场模型、eu/gu 伦敦盘 po3、prop firm 资金管理及 3 月实盘回放完整拆解。 msnr 炼金术 (part 1–6) part 4-5 po3 h4+h1 prop firm">  <div class="v-top"><span class="v-grp">MSNR 炼金术 (Part 1–6)</span></div>  <h3 class="v-title">MSNR 炼金术 · Part 4–5 入场与风控</h3>  <p class="v-desc">低/中/高风险入场模型、EU/GU 伦敦盘 PO3、Prop Firm 资金管理及 3 月实盘回放完整拆解。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">Part 4-5</span><span class="tag">PO3</span><span class="tag">H4+H1</span><span class="tag">Prop Firm</span></div><span class="v-size">710 KB</span></div></a>
+<a class="v-card" href="pages/alchemy-part6.html" data-group="alchemy" data-search="msnr 炼金术 · part 6（总结篇） 19 个交易日 eurusd 连续实盘复盘、h4 obstacle 对冲博弈与全流程心态管理。 msnr 炼金术 (part 1–6) part 6 19日复盘 eurusd obstacle">  <div class="v-top"><span class="v-grp">MSNR 炼金术 (Part 1–6)</span></div>  <h3 class="v-title">MSNR 炼金术 · Part 6（总结篇）</h3>  <p class="v-desc">19 个交易日 EURUSD 连续实盘复盘、H4 Obstacle 对冲博弈与全流程心态管理。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">Part 6</span><span class="tag">19日复盘</span><span class="tag">EURUSD</span><span class="tag">Obstacle</span></div><span class="v-size">486 KB</span></div></a>
+<a class="v-card" href="pages/arift-t8.html" data-group="arift" data-search="arif t · batch t8 完整体系（part 1–4） 五大 snr 形态与 miss 验证、ic/cc 颜色质量、the codex 7 类趋势线（411/666/marriage ab:bc≤3:1）与新闻 cooldown。 arif t 体系 (t8 + 2022) batch t8 the codex marriage gap extension">  <div class="v-top"><span class="v-grp">Arif T 体系 (T8 + 2022)</span></div>  <h3 class="v-title">Arif T · Batch T8 完整体系（Part 1–4）</h3>  <p class="v-desc">五大 SNR 形态与 Miss 验证、IC/CC 颜色质量、The Codex 7 类趋势线（411/666/Marriage AB:BC≤3:1）与新闻 Cooldown。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">Batch T8</span><span class="tag">The Codex</span><span class="tag">Marriage</span><span class="tag">Gap Extension</span></div><span class="v-size">1.53 MB</span></div></a>
+<a class="v-card" href="pages/arift-2022.html" data-group="arift" data-search="arif t · 2022 mentorship 实战精简篇 w1→d1→h4→h1 四级联传导、fresh + 第2层以上、触 d1/w1 后首 hns、wick candle 3 变体与双线 10 pip sl 模型。 arif t 体系 (t8 + 2022) 2022版 10 pip sl wick candle hns例外">  <div class="v-top"><span class="v-grp">Arif T 体系 (T8 + 2022)</span><span class="v-badge hot">高胜率实战</span></div>  <h3 class="v-title">Arif T · 2022 Mentorship 实战精简篇</h3>  <p class="v-desc">W1→D1→H4→H1 四级联传导、Fresh + 第2层以上、触 D1/W1 后首 HNS、Wick Candle 3 变体与双线 10 Pip SL 模型。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">2022版</span><span class="tag">10 Pip SL</span><span class="tag">Wick Candle</span><span class="tag">HNS例外</span></div><span class="v-size">511 KB</span></div></a>
+<a class="v-card" href="pages/kangfx-master.html" data-group="kangfx" data-search="kangfx advanced msnr · 26 集全体系总纲 storyline→ftfl→stfl→ttfl svg 主干流程、六大入场模型路由、白板缩写词典、三体系横向对照与交互式盘前清单。 kangfx 26 集全套 总纲 交互清单 三体系对照 26集索引">  <div class="v-top"><span class="v-grp">KangFx 26 集全套</span><span class="v-badge hot">总纲推荐</span></div>  <h3 class="v-title">KangFx Advanced MSNR · 26 集全体系总纲</h3>  <p class="v-desc">Storyline→FTFL→STFL→TTFL SVG 主干流程、六大入场模型路由、白板缩写词典、三体系横向对照与交互式盘前清单。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">总纲</span><span class="tag">交互清单</span><span class="tag">三体系对照</span><span class="tag">26集索引</span></div><span class="v-size">44 KB</span></div></a>
+<a class="v-card" href="pages/kangfx-part1-6.html" data-group="kangfx" data-search="kangfx 正课 part 1–6 · 基础水平位与故事线 close-only 画线、4 类 ocl（1 lab ocl/socl/rocl/lsocl）、line chart apex/iab、四大 qm（abqm/ftqm/stqm/iabqm）与延续漏斗。 kangfx 26 集全套 b01-b06 1 lab ocl abqm+ftqm re-fresh">  <div class="v-top"><span class="v-grp">KangFx 26 集全套</span></div>  <h3 class="v-title">KangFx 正课 Part 1–6 · 基础水平位与故事线</h3>  <p class="v-desc">Close-only 画线、4 类 OCL（1 LAB OCL/sOCL/rOCL/lsOCL）、Line Chart Apex/iab、四大 QM（abQM/ftQM/stQM/iabQM）与延续漏斗。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">B01-B06</span><span class="tag">1 LAB OCL</span><span class="tag">abQM+ftQM</span><span class="tag">Re-fresh</span></div><span class="v-size">1.80 MB</span></div></a>
+<a class="v-card" href="pages/kangfx-part7-12.html" data-group="kangfx" data-search="kangfx 正课 part 7–12 · 多周期与入场模型 ftfl→stfl→ttfl 盒内精修、50% equilibrium、14b 与 d1w4 入场模型、70/30 分仓、spread buffer、strong ftfl 与 roadblocks。 kangfx 26 集全套 b07-b12 d1w4 14b equilibrium">  <div class="v-top"><span class="v-grp">KangFx 26 集全套</span></div>  <h3 class="v-title">KangFx 正课 Part 7–12 · 多周期与入场模型</h3>  <p class="v-desc">FTFL→STFL→TTFL 盒内精修、50% Equilibrium、14b 与 D1W4 入场模型、70/30 分仓、Spread Buffer、Strong FTFL 与 Roadblocks。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">B07-B12</span><span class="tag">D1W4</span><span class="tag">14b</span><span class="tag">Equilibrium</span></div><span class="v-size">1.80 MB</span></div></a>
+<a class="v-card" href="pages/kangfx-yt14.html" data-group="kangfx" data-search="kangfx 油管进阶 14 期 · 高阶模型全解 40s 方向、单周 1:200+ rr 复盘、twm 三智者（方法1&2）、q-top 权力转移、non-floating 去悬空与最新 trapezoid qm（梯形 qm）。 kangfx 26 集全套 y01-y14 trapezoid qm twm q-top">  <div class="v-top"><span class="v-grp">KangFx 26 集全套</span><span class="v-badge hot">含最新模型</span></div>  <h3 class="v-title">KangFx 油管进阶 14 期 · 高阶模型全解</h3>  <p class="v-desc">40s 方向、单周 1:200+ RR 复盘、TWM 三智者（方法1&2）、Q-Top 权力转移、Non-Floating 去悬空与最新 Trapezoid QM（梯形 QM）。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">Y01-Y14</span><span class="tag">Trapezoid QM</span><span class="tag">TWM</span><span class="tag">Q-Top</span></div><span class="v-size">2.43 MB</span></div></a>
+<a class="v-card" href="pages/high-rr-fusion.html" data-group="fusion" data-search="纯正 msnr 大盈亏比（>1:10）进阶融合手册 无任何外部 ict 概念，聚焦纯正 msnr 体系下博取 1:10 至 1:50+ 盈亏比的结构共振、精细止损与持仓规则。 大盈亏比融合与全案例库 >1:10 rr 纯msnr融合 无外部概念">  <div class="v-top"><span class="v-grp">大盈亏比融合与全案例库</span><span class="v-badge hot">1:10+ 专项</span></div>  <h3 class="v-title">纯正 MSNR 大盈亏比（>1:10）进阶融合手册</h3>  <p class="v-desc">无任何外部 ICT 概念，聚焦纯正 MSNR 体系下博取 1:10 至 1:50+ 盈亏比的结构共振、精细止损与持仓规则。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">>1:10 RR</span><span class="tag">纯MSNR融合</span><span class="tag">无外部概念</span></div><span class="v-size">37 KB</span></div></a>
+<a class="v-card" href="pages/cases-187.html" data-group="fusion" data-search="msnr 全课程 · 低中高风险 187 案例深度图库 收录炼金术 118 例 + arif t 69 例，配 292 张高清实盘帧、风险等级/结果筛选与深度详版切换。 大盈亏比融合与全案例库 187 案例 292 张截图 低中高风险">  <div class="v-top"><span class="v-grp">大盈亏比融合与全案例库</span><span class="v-badge hot">187 案例图鉴</span></div>  <h3 class="v-title">MSNR 全课程 · 低中高风险 187 案例深度图库</h3>  <p class="v-desc">收录炼金术 118 例 + Arif T 69 例，配 292 张高清实盘帧、风险等级/结果筛选与深度详版切换。</p>  <div class="v-foot"><div class="v-tags"><span class="tag">187 案例</span><span class="tag">292 张截图</span><span class="tag">低中高风险</span></div><span class="v-size">10.88 MB · 建议 Wi-Fi</span></div></a>
+  </div>
+
+  <footer>
+    开源托管于 <a href="https://github.com/wait2050/snr" style="color:var(--accent)">github.com/wait2050/snr</a>（MIT License） · 手机浏览器“添加到主屏幕”可作随身手册离线/快速打开
+  </footer>
+</div>
+
+<script>
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('snr_theme', t);
+    localStorage.setItem('kangfx_theme', t);
+  }
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  }
+  const savedTheme = localStorage.getItem('snr_theme') || localStorage.getItem('kangfx_theme');
+  if (savedTheme) applyTheme(savedTheme);
+
+  let activeGroup = 'all';
+  const cards = [...document.querySelectorAll('.v-card')];
+  const searchEl = document.getElementById('search');
+
+  function renderFilter() {
+    const q = searchEl.value.trim().toLowerCase();
+    cards.forEach(c => {
+      const grpOk = activeGroup === 'all' || c.dataset.group === activeGroup;
+      const qOk = !q || c.dataset.search.includes(q);
+      c.classList.toggle('hidden', !(grpOk && qOk));
+    });
+  }
+
+  document.getElementById('tabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab');
+    if (!btn) return;
+    activeGroup = btn.dataset.filter;
+    document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b === btn));
+    renderFilter();
+  });
+  searchEl.addEventListener('input', renderFilter);
+</script>
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>纯正 MSNR 大盈亏比（&gt; 1:10）进阶知识与体系融合手册</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --bg-elev: #121826;
+      --bg-card: #161e2e;
+      --bg-code: #0d1320;
+      --text: #e6edf7;
+      --text-muted: #93a1b8;
+      --border: #243047;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --gold: #f59e0b;
+      --gold-soft: rgba(245, 158, 11, 0.14);
+      --green: #34d399;
+      --green-soft: rgba(52, 211, 153, 0.14);
+      --red: #f87171;
+      --red-soft: rgba(248, 113, 113, 0.14);
+      --purple: #a78bfa;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      --svg-grid: #1f2a3d;
+      --svg-line: #cbd5e1;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-elev: #ffffff;
+      --bg-card: #ffffff;
+      --bg-code: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --accent: #0284c7;
+      --accent-soft: rgba(2, 132, 199, 0.10);
+      --gold: #d97706;
+      --gold-soft: rgba(217, 119, 6, 0.10);
+      --green: #059669;
+      --green-soft: rgba(5, 150, 105, 0.10);
+      --red: #dc2626;
+      --red-soft: rgba(220, 38, 38, 0.10);
+      --purple: #7c3aed;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --svg-grid: #e2e8f0;
+      --svg-line: #334155;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+      font-size: 15px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      max-width: 1380px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 28px 20px;
+      border-right: 1px solid var(--border);
+      background: var(--bg-elev);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-title { font-weight: 700; font-size: 15px; letter-spacing: 0.2px; color: var(--text); }
+    .brand-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .toc-group { margin-bottom: 14px; }
+    .toc-heading {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin: 12px 0 6px 8px;
+      font-weight: 600;
+    }
+    .toc a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 7px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: all 0.15s ease;
+    }
+    .toc a:hover, .toc a.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .main { padding: 36px 48px 80px; max-width: 1040px; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-elev));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 600; padding: 3px 10px;
+      border-radius: 999px; border: 1px solid var(--border);
+      background: var(--bg-code); color: var(--text-muted);
+    }
+    .badge.accent { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+    .badge.gold { color: var(--gold); background: var(--gold-soft); border-color: transparent; }
+    .badge.green { color: var(--green); background: var(--green-soft); border-color: transparent; }
+    .hero h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.25; }
+    .hero p { margin: 0; color: var(--text-muted); font-size: 14.5px; }
+
+    section { margin-bottom: 46px; scroll-margin-top: 24px; }
+    h2 {
+      font-size: 22px; margin: 0 0 18px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2 .part-tag {
+      font-size: 12px; font-weight: 600; padding: 2px 9px;
+      border-radius: 6px; background: var(--accent-soft); color: var(--accent);
+    }
+    h2 .part-tag.gold { background: var(--gold-soft); color: var(--gold); }
+    h2 .part-tag.green { background: var(--green-soft); color: var(--green); }
+    h3 { font-size: 17px; margin: 26px 0 10px; color: var(--text); }
+    p { margin: 8px 0 12px; }
+    ul, ol { margin: 8px 0 14px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+    strong { color: var(--text); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88em; background: var(--bg-code); border: 1px solid var(--border);
+      padding: 1px 6px; border-radius: 5px; color: var(--accent);
+    }
+
+    .formula-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 16px 0 22px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .formula-bar span { color: var(--gold); margin: 0 6px; }
+
+    .callout {
+      border-left: 3.5px solid var(--accent); background: var(--accent-soft);
+      padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 14px 0; font-size: 14px;
+    }
+    .callout.gold { border-left-color: var(--gold); background: var(--gold-soft); }
+    .callout.green { border-left-color: var(--green); background: var(--green-soft); }
+    .callout.red { border-left-color: var(--red); background: var(--red-soft); }
+    .callout-title { font-weight: 700; margin-bottom: 4px; display: block; }
+
+    table {
+      width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 14px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    th, td { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { background: var(--bg-code); font-weight: 600; color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 14px 0 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 14px 0 20px; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+    .card-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; }
+    .card-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px; }
+
+    .svg-box {
+      background: var(--bg-code); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px; margin: 14px 0 18px; overflow: hidden;
+    }
+    .svg-box svg { width: 100%; height: auto; display: block; }
+    .svg-caption { font-size: 12.5px; color: var(--text-muted); margin-top: 6px; text-align: center; }
+
+    .mobile-header {
+      display: none; position: sticky; top: 0; z-index: 20;
+      background: var(--bg-elev); border-bottom: 1px solid var(--border);
+      padding: 12px 16px; align-items: center; justify-content: space-between;
+    }
+
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .mobile-header { display: flex; }
+      .main { padding: 22px 18px 60px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .sidebar, .mobile-header, .theme-btn { display: none !important; }
+      .layout { display: block; }
+      .main { padding: 0; max-width: 100%; }
+      .card, .hero { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+
+<style id="snr-mobile-enhance">
+  /* Mobile drawer, responsive tables & floating pill navigation */
+  #snr-float-bar {
+    position: fixed;
+    right: 14px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 9500;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(18, 24, 38, 0.90);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  }
+  html[data-theme="light"] #snr-float-bar {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(2, 132, 199, 0.30);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  }
+  .snr-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text, #e6edf7);
+    background: transparent;
+    border: 1px solid var(--border, #243047);
+    border-radius: 999px;
+    padding: 6px 11px;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.2;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .snr-pill-btn:active { transform: scale(0.96); }
+  #snr-toc-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 8, 16, 0.65);
+    z-index: 8990;
+  }
+  #snr-toc-backdrop.open { display: block; }
+  img, svg { max-width: 100%; }
+  @media (max-width: 960px) {
+    html, body { overflow-x: hidden; }
+    .main, main, .wrap, .container { max-width: 100% !important; padding-left: 14px !important; padding-right: 14px !important; padding-bottom: 86px !important; }
+    .hero { padding: 18px 16px !important; border-radius: 12px !important; }
+    .hero h1 { font-size: 21px !important; }
+    h2 { font-size: 18px !important; }
+    table {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .sidebar {
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      width: 82vw !important;
+      max-width: 310px !important;
+      z-index: 9000 !important;
+      transform: translateX(-105%);
+      transition: transform 0.22s ease;
+      box-shadow: 12px 0 36px rgba(0, 0, 0, 0.45);
+      border-bottom: none !important;
+    }
+    .sidebar.mobile-toc-open { transform: translateX(0) !important; }
+    .shot-grid, .shot-grid.three, .grid-2, .grid-3, .cards { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 961px) {
+    #snr-toc-btn { display: none !important; }
+  }
+</style>
+
+</head>
+<body>
+
+<div class="mobile-header">
+  <strong>纯正 MSNR 1:10+ 融合手册</strong>
+  <button class="theme-btn" onclick="toggleTheme()">切换浅/深色</button>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div>
+        <div class="brand-title">纯 MSNR 大盈亏比手册</div>
+        <div class="brand-sub">1:10 ～ 1:30+ 进阶引擎（去 ICT 版）</div>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()">浅/深色</button>
+    </div>
+    <nav class="toc">
+      <div class="toc-group">
+        <div class="toc-heading">底层数学与逻辑</div>
+        <a href="#math-rr">1:10+ 的纯粹 MSNR 公式</a>
+      </div>
+      <div class="toc-group">
+        <div class="toc-heading">四大纯 MSNR 1:10+ 引擎</div>
+        <a href="#engine-1">流派 A：QML + Fakeout + MPL (King)</a>
+        <a href="#engine-2">流派 B：纯折线 OC / 确认精修流</a>
+        <a href="#engine-3">流派 C：交叉单点狙击 (411/666+Miss)</a>
+        <a href="#engine-4">流派 D：Storyline 保本滚仓 (Layering)</a>
+      </div>
+      <div class="toc-group">
+        <div class="toc-heading">融合蓝图与风控</div>
+        <a href="#fusion-blueprint">与 Arif T / 炼金术融合模板</a>
+        <a href="#traps-ny">极窄止损陷阱与纽约时间窗</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <div class="hero-badges">
+        <span class="badge accent">Pure MSNR High R:R (&gt; 1:10)</span>
+        <span class="badge gold">QML / MPL / King / OC Refinement</span>
+        <span class="badge green">零额外 ICT 概念 · 纽约时间 EST/EDT</span>
+      </div>
+      <h1>纯正马来西亚 MSNR 大盈亏比（&gt; 1:10）进阶知识与融合手册</h1>
+      <p>完全剥离外部 ICT 概念（仅保留你已学过的 <strong>炼金术</strong> 体系已有组件），专注马来西亚本土 SNR（如 <code>QML</code>、<code>MPL</code>、<code>King Level</code>、<code>SSR Fakeout</code>、<code>纯折线 OC 跨周期嵌套</code> 与 <code>Layering 保本滚仓</code>）实现 <code>1:10 ～ 1:30+</code> 盈亏比的核心技术，方便与 <strong>Arif T</strong> 和 <strong>炼金术</strong> 无缝自融合。</p>
+    </div>
+
+    <section id="math-rr">
+      <h2><span class="part-tag gold">底层公式</span> 不靠 ICT，纯 MSNR 如何稳定打到 <code>1:10+</code>？</h2>
+      <div class="formula-bar">
+        单笔盈亏比 (R:R) = 高周期目标距离（D1 / W1 Storyline → 对侧 Roadblock） ÷ 进场止损厚度（MPL 隐藏底座 / M15-M5 精修线）
+      </div>
+      <p>在纯马来西亚 SNR 体系里，获得 <code>1:10</code> 以上盈亏比完全不需要切换语言体系——本质只有两条路：</p>
+      <ol>
+        <li><strong>压缩止损分母到 `5–8 pips`</strong>：通过寻找 Fakeout 内部底座（<code>MPL</code>）、跨周期 <code>OC / Gap</code> 同位套娃、或炼金术的 <code>M15/M5 折线破位回踩确认（5–7 pips SL）</code>，在 <code>D1 / W1</code> 级波段（<code>100–300+ pips</code>）起点抢得先机；</li>
+        <li><strong>保持 `10 pip SL` 放大收益分子</strong>：靠 Arif T 的 <code>Timeframe Cascade</code> 沿途推保本加仓（<code>Layering</code>），把单波主趋势滚到 <code>15R ～ 30R+</code>。</li>
+      </ol>
+
+      <table>
+        <thead>
+          <tr><th>纯 MSNR 1:10+ 引擎</th><th>核心压缩 / 放大机制</th><th>典型 SL / TP 尺度</th><th>与你现有两套笔记的天然接口</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>流派 A：QML + Fakeout + MPL</strong><br /><span style="color:var(--gold);font-size:12px;">（Mansor Sapari / King SNR）</span></td>
+            <td>先等价格用假突破扫穿可见 <code>SSR</code>，再精准限价进在左肩破位背后的 <strong><code>MPL</code>（隐藏实体底座）</strong></td>
+            <td>SL <code>5–10 pips</code> / TP <code>100–250p</code></td>
+            <td>直接升级 Arif T 的 <code>HNS / D1-W1触及后首HNS</code> 与炼金术的 <code>Fakeout + Fuel</code></td>
+          </tr>
+          <tr>
+            <td><strong>流派 B：纯折线 OC 跨周期精修</strong><br /><span style="color:var(--accent);font-size:12px;">（MSNR 实体嵌套 + 炼金术确认）</span></td>
+            <td>从 <code>D1/H4</code> Fresh <code>OC/Gap</code> 切到 <code>M15/M5</code>，用 <strong><code>MA(1,Close)</code> 折线微结构线</strong>或 <strong>折线破位确认（5–7p SL）</strong> 入场</td>
+            <td>SL <code>5–8 pips</code> / TP <code>80–200p</code></td>
+            <td>直接复刻炼金术 Part 4/6 的 <code>Confirmation Entry</code>（<code>Major LH/HL 破位回踩</code>）</td>
+          </tr>
+          <tr>
+            <td><strong>流派 C：交叉“单点”狙击</strong><br /><span style="color:var(--green);font-size:12px;">（Marriage + 411/666）</span></td>
+            <td><code>H4 / H1</code> <strong><code>Type 6 (666)</code> 或 <code>Type 4 (411)</code> 趋势线</strong> 与 <strong><code>Classic + Miss</code></strong> 相交于单一几何坐标点，实现近乎零浮亏起飞</td>
+            <td>SL <code>6–10 pips</code> / TP <code>100–200p</code></td>
+            <td>直接复用 Arif T Batch T8 Lesson 3 趋势线与炼金术 <code>Trendline Price Level</code></td>
+          </tr>
+          <tr>
+            <td><strong>流派 D：保本滚仓叠加</strong><br /><span style="color:var(--purple);font-size:12px;">（Storyline Layering）</span></td>
+            <td>首单 <code>10p SL</code> 脱离 30p 移保本，沿 <code>H1→H4→D1</code> 途中的 Fresh 延续位叠新层，用浮盈兜底</td>
+            <td>单层 <code>10p</code> / 总净赚 <code>15R–30R+</code></td>
+            <td>完美契合 Arif T 2022 的 <code>10 pip SL</code> + <code>Timeframe Cascade</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="engine-1">
+      <h2><span class="part-tag">流派 A</span> 马来西亚本土狙击之王：<code>QML + Fakeout + MPL (King SNR)</code></h2>
+      <p>在马来西亚传统 SNR 教学（如 Mansor Sapari / Shadow / King SNR 体系）中，最著名的高盈亏比武器就是 <strong>QML + Fakeout + MPL</strong>，完全建立在实体折线、影线假破与头肩力学之上。</p>
+
+      <h3>A.1 逐层拆解三大核心组件</h3>
+      <ol>
+        <li><strong>SSR（Significant / Same-Side Support &amp; Resistance）</strong>：盘面上极其显眼、被测试了 2 次以上形成平头双顶/双底或连线阻力的“大众可见水平位”——<strong>散户的止损高度集中在这条线外侧</strong>。</li>
+        <li><strong>Fakeout（假突破 / <code>Cucuk</code> 刺破）</strong>：主力不直接在 SSR 掉头，而是先拉出一根强穿 SSR 水平线的高点（或下穿支撑的低点），把早期空头/多头止损全部触发并诱导突破单追进，随后<strong>立刻反方向大实体吞没跌破前低（或涨破前高）</strong>，完成整个 <strong>Quasimodo (QML)</strong> 结构。</li>
+        <li><strong>MPL（Maximum Pain Level，最大痛点底座）—— 将止损压入 5–10 pips 的机关！</strong>
+          <div class="callout gold">
+            <span class="callout-title">QML 左肩线 vs MPL 隐藏底座的区别</span>
+            • <strong>传统 QML 挂单</strong>：挂在左肩水平线（Left Shoulder），但止损必须放在整个“头部极值”外侧，若头部冲得很深，止损往往需要 <code>20–30 pips</code>，限制了盈亏比；<br />
+            • <strong>MPL 狙击精修</strong>：往 Fakeout 冲刺段与头部转折处放大（或降一档周期），找出<strong>制造那最后一脚假突破并引爆破位反转的极小实体交界/隐藏底座（如两根K线极短 OC 平台、小 Doji 或无影线起跌点，即 MPL）</strong>。<br />
+            • <strong>效果</strong>：MPL 位于 QML 左肩更深处、极度贴近头部极值点。在 MPL 挂 Limit 单，只需在头部极值外加 <code>5–8 pips</code> 止损，不仅避开了普通回踩左肩扫尾的风险，更让盈亏比翻倍迈入 <code>1:10 ～ 1:20+</code>！
+          </div>
+        </li>
+      </ol>
+
+      <h3>A.2 什么叫 <code>King Level / King SNR</code>？</h3>
+      <ul>
+        <li>在马派进阶术语中，<strong><code>King</code></strong> 指同时满足四个条件的高爆点：<strong>① 前方有显眼 SSR 被 Fakeout 刺穿；② 留下清晰的隐藏底座（MPL / 小周期实体交界）；③ 随后伴随强有力的实体破位（Breakout）；④ 回踩之前完全 <code>Fresh</code> 未被触及</strong>。</li>
+        <li>King 级别搭配 <code>D1 / H4 Storyline</code>（及炼金术的 <code>61.8%+</code> 深度折价/溢价区）使用时，极易走出“触线即飞（Zero Float）”的 1:10 以上行情。</li>
+      </ul>
+    </section>
+
+    <section id="engine-2">
+      <h2><span class="part-tag gold">流派 B</span> 纯折线跨周期精修：<code>OC / Gap 嵌套 + 炼金术确认入场</code></h2>
+      <p>完全不用外部概念，仅靠 <strong>MSNR 实体交界（OC / Gap / Classic）</strong> 与 <strong>炼金术已有的 <code>Confirmation Entry</code></strong>，就有两条清晰的缩窄分母路径：</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">路径 B1：纯实体 <code>OC / Gap</code> 跨周期嵌套（限价挂单）</div>
+          <p class="card-desc">把 Arif T 2022 的“向下精修一层”扩展成严格对齐的纯 SNR 嵌套：<br />
+          1. 先在 <code>D1 / H4</code> 锁定完全 Fresh 的 <code>OC / Gap / Classic+Miss</code>；<br />
+          2. 向下切入 <code>H1 → M15 → M5</code>，只找<strong>位置刚好贴在 HTF 大线外缘（买单略下、卖单略上）且自身具备 <code>Miss</code> 或 <code>Wick Candle</code> 3 变体的小周期实体交界线</strong>；<br />
+          3. 直接挂单在那条精细的 <code>M15 / M5</code> 实体线，止损放在该微周期结构极值外 <code>5–8 pips</code>，目标直指 D1 对侧关键位。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">路径 B2：炼金术 <code>Confirmation Entry</code>（<code>5–7 pips</code> 窄止损）</div>
+          <p class="card-desc">不想盲挂首触限价时，直接放大执行炼金术 Part 4 &amp; Part 6 已学过的<strong>低风险折线破位确认</strong>：<br />
+          1. 价格抵达 <code>D1 / H4 Fresh</code> 线（最好刚扫完 <code>ERL / Asian H-L / PDH-PDL</code> 等燃料）；<br />
+          2. 切到 <code>M5 / M1</code> 的 <strong><code>MA(1, Close)</code> 折线图</strong>，等待最后一个主导下行/上行的 <strong><code>Major LH / Major HL</code> 被反向实体明确破位</strong>；<br />
+          3. 在新成型的 <code>M5/M1 SBR-RBS</code> 或 <code>M5 Wick Gap</code> 挂回踩单（止损按炼金术实盘参考仅 <strong><code>5–7 pips</code></strong>），瞄准 D1 对侧 100–200p，轻松达成 <code>1:15 ～ 1:30</code>！</p>
+        </div>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 920 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="920" height="340" fill="none"/>
+          <text x="20" y="26" fill="var(--text)" font-size="14" font-weight="700">图 1：纯 MSNR 1:10+ 双核原理图——流派 A (SSR Fakeout + QML + MPL) vs 流派 B2 (纯折线 Major HL/LH 破位)</text>
+
+          <!-- Panel 1: SSR Fakeout + QML + MPL -->
+          <rect x="16" y="42" width="436" height="282" rx="10" fill="var(--bg-card)" stroke="var(--border)"/>
+          <text x="30" y="66" fill="var(--gold)" font-size="13" font-weight="700">流派 A：SSR Fakeout 诱捕 → QML → 压入 MPL 底座（以空例）</text>
+          <!-- Head extreme -->
+          <line x1="175" y1="88" x2="425" y2="88" stroke="var(--red)" stroke-width="1.6"/>
+          <text x="276" y="81" fill="var(--red)" font-size="11" font-weight="700">SL 紧贴头部外侧（5–8p）</text>
+          <!-- MPL -->
+          <line x1="195" y1="108" x2="425" y2="108" stroke="var(--green)" stroke-width="2.4"/>
+          <text x="276" y="122" fill="var(--green)" font-size="11" font-weight="700">MPL 隐藏底座（精准挂单点）</text>
+          <!-- QML Left Shoulder -->
+          <line x1="78" y1="138" x2="425" y2="138" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="276" y="152" fill="var(--accent)" font-size="10.5">QML 左肩位（传统较宽位）</text>
+          <!-- SSR Retail line -->
+          <line x1="36" y1="164" x2="290" y2="164" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="40" y="158" fill="var(--text-muted)" font-size="10.5">SSR 散户双顶阻力（Fakeout 猎杀区）</text>
+          <!-- Price Path -->
+          <polyline points="45,222 82,138 112,188 135,164 162,186 184,164 214,88 265,248 335,108 408,288" fill="none" stroke="var(--svg-line)" stroke-width="2.2"/>
+          <circle cx="82" cy="138" r="4" fill="var(--accent)"/>
+          <circle cx="214" cy="88" r="4.5" fill="var(--red)"/>
+          <circle cx="335" cy="108" r="5.5" fill="var(--green)"/>
+          <text x="30" y="306" fill="var(--text-muted)" font-size="11.5">刺穿 SSR 诱空/扫止损 → 破前低确认 → 回踩 MPL 底座拿 1:10～1:20+。</text>
+
+          <!-- Panel 2: Pure Line-Chart Confirmation Entry -->
+          <rect x="468" y="42" width="436" height="282" rx="10" fill="var(--bg-card)" stroke="var(--border)"/>
+          <text x="482" y="66" fill="var(--accent)" font-size="13" font-weight="700">流派 B2：纯 MSNR 折线确认入场（5–7 pips SL · 以多例）</text>
+          <!-- HTF Zone -->
+          <rect x="484" y="214" width="404" height="46" fill="var(--accent-soft)" stroke="var(--accent)" stroke-dasharray="4,3"/>
+          <text x="492" y="252" fill="var(--accent)" font-size="11" font-weight="700">D1 / H4 Fresh OC / Gap 大支撑（扫除 Asian Low / PDL 后）</text>
+          <!-- Price & Line chart break -->
+          <polyline points="500,104 548,205 575,176 608,220 638,186 666,242 715,134 762,196 865,78" fill="none" stroke="var(--svg-line)" stroke-width="2.2"/>
+          <!-- Major LH line -->
+          <line x1="600" y1="186" x2="732" y2="186" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4,3"/>
+          <circle cx="638" cy="186" r="4" fill="var(--gold)"/>
+          <text x="646" y="176" fill="var(--gold)" font-size="10.5" font-weight="700">M5 折线 Major LH 被实体打破</text>
+          <!-- Retest on M5 SBR/RBS -->
+          <line x1="705" y1="196" x2="825" y2="196" stroke="var(--green)" stroke-width="2"/>
+          <circle cx="762" cy="196" r="5.5" fill="var(--green)"/>
+          <text x="768" y="205" fill="var(--green)" font-size="11" font-weight="700">回踩 M5 RBS (SL 5–7p)</text>
+          <text x="482" y="306" fill="var(--text-muted)" font-size="11.5">完全用 MSNR 收盘折线破位 + 回踩 RBS/Gap 执行，目标 D1 对侧 150p+。</text>
+        </svg>
+        <div class="svg-caption">纯正马派高盈亏比引擎：左图用 MPL 把头部极值止损压缩到极致；右图用炼金术折线 Major LH/HL 破位实现 5–7 pips 超小止损。</div>
+      </div>
+    </section>
+
+    <section id="engine-3">
+      <h2><span class="part-tag green">流派 C &amp; D</span> 交叉单点狙击 &amp; <code>Storyline</code> 保本滚仓（Layering）</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">流派 C：Arif T 交叉“单点”狙击（<code>Marriage + 411/666</code>）</div>
+          <p class="card-desc">水平线往往是一条横线、容易反复震荡扫损；但如果你将 Arif T T8 的 <strong><code>Type 4 (411)</code> 或 <code>Type 6 (666 Satan TL)</code> 趋势线</strong> 与一条 <strong><code>Classic + Miss</code> 或 <code>BHNS</code></strong> 联姻（Marriage）——且满足 <strong><code>AB:BC ≤ 1:3</code></strong> 与 <strong>炼金术 <code>Trendline Price Level</code></strong> 过滤：<br />
+          两条斜/横线只在<strong>唯一一个时间-价格交叉点</strong>相遇！此处极易走出触点暴走（Minimal Float），用 <code>6–10 pips SL</code> 搏取整段 H4/D1 反弹（<code>1:10 ～ 1:20</code>）。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">流派 D：保本滚仓叠层（<code>Layering / Stacking</code>）</div>
+          <p class="card-desc">大波段交易员最稳健的 <code>1:20+</code> 路径——<strong>不赌第一发超紧止损，靠分批叠加把收益乘起来</strong>：<br />
+          1. 触及 D1/W1 后的首个 <code>HNS</code>（或炼金术 <code>Confirmation Entry</code>）打入 1 倍基础仓（<code>10 pip SL</code>）；<br />
+          2. 走出 <code>30 pips</code> 并打破顺向结构后，首单推至 <strong>保本（BE）</strong>；<br />
+          3. 沿着 Arif T 2022 的 <code>Timeframe Cascade</code>（<code>H1→H4→D1</code>），每当途中回踩新的 <strong><code>H1 Fresh 第 2 层</code>、<code>Wick Candle Gap</code> 或 <code>411 趋势线交叉</code></strong> 时，用已锁定的浮盈做护盾再叠新单（每笔仍只放 10p SL），跑完一段 <code>200 pips</code> 行情即可累计 <code>15R ～ 30R+</code>！</p>
+        </div>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 920 260" xmlns="http://www.w3.org/2000/svg">
+          <rect width="920" height="260" fill="none"/>
+          <text x="20" y="24" fill="var(--text)" font-size="14" font-weight="700">图 2：流派 D（纯 MSNR 保本滚仓 Layering）：用 10 Pip 基础止损沿 Cascade 滚出 1:25+ 总回报</text>
+          <line x1="30" y1="220" x2="880" y2="220" stroke="var(--accent)" stroke-width="2.2"/>
+          <text x="34" y="238" fill="var(--accent)" font-size="11" font-weight="700">Weekly / Daily 主方向起点（目标对侧 D1/W1 距离 +200 pips）</text>
+          <polyline points="48,160 88,220 135,148 162,175 245,112 285,136 420,82 475,105 640,56 760,42" fill="none" stroke="var(--svg-line)" stroke-width="2.4"/>
+          <circle cx="162" cy="175" r="5.5" fill="var(--gold)"/>
+          <text x="150" y="198" fill="var(--gold)" font-size="11" font-weight="700">Layer 1 首 HNS (10p SL → 已BE)</text>
+          <circle cx="285" cy="136" r="5.5" fill="var(--green)"/>
+          <text x="275" y="158" fill="var(--green)" font-size="11" font-weight="700">Layer 2 H1 Fresh第2层 (10p SL)</text>
+          <circle cx="475" cy="105" r="5.5" fill="var(--accent)"/>
+          <text x="462" y="128" fill="var(--accent)" font-size="11" font-weight="700">Layer 3 Wick Gap 延续 (10p SL)</text>
+          <rect x="650" y="72" width="235" height="68" rx="8" fill="var(--green-soft)" stroke="var(--green)"/>
+          <text x="664" y="96" fill="var(--green)" font-size="12" font-weight="700">首单已保本 ≈ 零净风险敞口</text>
+          <text x="664" y="118" fill="var(--text)" font-size="11.5">Layer 1(+13R)+2(+10R)+3(+6R)</text>
+          <text x="664" y="134" fill="var(--gold)" font-size="12" font-weight="700">→ 整波段兑现 ≈ 29R (1:29)!</text>
+        </svg>
+        <div class="svg-caption">Layering 滚动机制：永远只在前一单已经推保本之后，才在下一个 Fresh 顺势结构叠新单。</div>
+      </div>
+    </section>
+
+    <section id="fusion-blueprint">
+      <h2><span class="part-tag gold">融合蓝图</span> 专为你的三套纯 MSNR 笔记打造的“1:10+ 自融合模板”</h2>
+      <p>把外部高 R:R 技法完全翻译成你已经掌握的 <strong>Arif T（T8 + 2022）</strong> 与 <strong>炼金术（Part 1–6）</strong> 原生语言后，推荐按下面三套模板任选其一回测定型：</p>
+
+      <table>
+        <thead>
+          <tr><th>融合路线</th><th>方向与找区（100% 原有体系）</th><th>触发与压缩 SL 方式（实现 1:10+）</th><th>适用风格</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>模板 1：2022 骨架 + Fakeout / MPL 狙击</strong></td>
+            <td>Arif T 2022 版 <code>W1→D1→H4→H1</code> + <code>Decision Level</code> + <code>Fresh 第 2 层</code></td>
+            <td>遇 <code>D1/W1</code> 反转或 <code>HNS</code> 时，检查是否刚刺穿前方可见 <code>SSR</code>（<strong>Fakeout</strong>），限价压进最极端的 <strong><code>MPL</code> 隐藏底座</strong>，<code>SL 5–8p</code></td>
+            <td>喜欢挂 Limit 单、不盯 M1 的精准波段手</td>
+          </tr>
+          <tr>
+            <td><strong>模板 2：炼金术确认入场 + 2022 质量过滤</strong></td>
+            <td>炼金术 <code>Storyline</code> + <code>61.8%+</code> 折价溢价 + <code>ERL / Asian H-L</code> 流动性燃料</td>
+            <td>触及 HTF 线后切 <code>M15 / M5</code> 折线，等 <code>Major LH/HL</code> 被实体破位，回踩用 <code>Wick Candle Gap</code> 或 <code>RBS/SBR</code> 进场（<code>SL 5–7p</code>）</td>
+            <td>擅长在伦敦/纽约早盘盯盘抓确认信号的日内波段手</td>
+          </tr>
+          <tr>
+            <td><strong>模板 3：Arif T 纯种双线 + 级联滚雪球</strong></td>
+            <td>严格用 2022 版 <code>Fresh 第 2 层</code> + <code>Wick Gap</code> + T8 <code>411/666</code></td>
+            <td>首单保持 <code>10 pip SL</code> 保稳健高胜率；盈利推保本后，沿 <code>Timeframe Cascade</code> 在新 <code>H1</code> 级别不断叠加 Layer</td>
+            <td>最稳健，既不因 3–5p 止损被点差误杀，又能吃满大趋势</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="traps-ny">
+      <h2><span class="part-tag">避坑与纪律</span> 追求 <code>&gt; 1:10</code> 的三大风控红线（纽约时间 EST/EDT）</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">红线 1：极窄止损严禁跨过展期与冷清盘</div>
+          <p class="card-desc">当止损压缩到 <code>5–8 pips</code> 时，亚盘高点差或纽约收盘展期（<code>17:00 EST/EDT</code> 前后）的瞬间点差扩张会直接误扫止损。窄止损确认流建议只在 <strong>伦敦开盘（<code>02:00–05:00 EST/EDT</code>）</strong> 与 <strong>纽约早盘高流动性窗口（<code>08:00–11:30 EST/EDT</code>）</strong> 执行。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">红线 2：严格遵守 1 小时新闻 <code>Cooldown Rule</code></div>
+          <p class="card-desc">在美盘重磅数据（如纽约时间 <code>08:30 EST/EDT</code> 的美国 CPI / 非农等）公布前后 <strong>1 小时</strong> 内，哪怕 M5 折线或 MPL 再完美也容易被新闻尖刺穿破，务必冷却 1 小时后再恢复评估。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">红线 3：不越过对侧 <code>Roadblock</code> 死扛凑 1:10</div>
+          <p class="card-desc">正如 Arif T 强调：若当前只是逆 Weekly、顺 Daily 的反弹单，前方 <code>60–70 pips</code> 就有对侧强 Daily 铁板位，到了即平仓甚至反手——不要为了凑“1:10”数字拿盈利单硬撞高级别铁板。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:40px;padding-top:18px;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);text-align:center;">
+      纯正 MSNR 大盈亏比（&gt; 1:10）融合手册 · 仅保留纯 MSNR 与炼金术已有组件
+    </footer>
+  </main>
+</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('snr_theme', next);
+  }
+  const saved = localStorage.getItem('snr_theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  const links = document.querySelectorAll('.toc a');
+  const sections = [...document.querySelectorAll('section')];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(sec => observer.observe(sec));
+</script>
+
+
+<script id="snr-mobile-script">
+(() => {
+  try {
+    const t = localStorage.getItem('snr_theme') || localStorage.getItem('kangfx_theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    const tb = document.querySelector('.theme-btn');
+    if (tb) {
+      tb.addEventListener('click', () => {
+        setTimeout(() => {
+          const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+          localStorage.setItem('snr_theme', cur);
+          localStorage.setItem('kangfx_theme', cur);
+        }, 0);
+      });
+    }
+  } catch (e) {}
+
+  const sidebar = document.querySelector('.sidebar');
+  const bar = document.createElement('div');
+  bar.id = 'snr-float-bar';
+
+  const home = document.createElement('a');
+  home.className = 'snr-pill-btn';
+  home.href = '../index.html';
+  home.textContent = '🏠 首页';
+  bar.appendChild(home);
+
+  if (sidebar) {
+    const backdrop = document.createElement('div');
+    backdrop.id = 'snr-toc-backdrop';
+    document.body.appendChild(backdrop);
+
+    const tocBtn = document.createElement('button');
+    tocBtn.id = 'snr-toc-btn';
+    tocBtn.className = 'snr-pill-btn';
+    tocBtn.type = 'button';
+    tocBtn.textContent = '📑 目录';
+    const closeToc = () => {
+      sidebar.classList.remove('mobile-toc-open');
+      backdrop.classList.remove('open');
+    };
+    tocBtn.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('mobile-toc-open');
+      backdrop.classList.toggle('open', open);
+    });
+    backdrop.addEventListener('click', closeToc);
+    sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeToc));
+    bar.appendChild(tocBtn);
+  }
+
+  const topBtn = document.createElement('button');
+  topBtn.className = 'snr-pill-btn';
+  topBtn.type = 'button';
+  topBtn.textContent = '↑';
+  topBtn.setAttribute('aria-label', '返回顶部');
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  bar.appendChild(topBtn);
+
+  document.body.appendChild(bar);
+})();
+</script>
+
+</body>
+</html>

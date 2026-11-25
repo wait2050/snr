@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KangFx Advanced MSNR &amp; Kang Concept · 26 集全体系串通总纲</title>
+  <style>
+    :root {
+      --bg: #0b0f17; --bg-elev: #121826; --bg-card: #161e2e; --bg-code: #0d1320;
+      --text: #e6edf7; --text-muted: #93a1b8; --border: #243047;
+      --accent: #38bdf8; --accent-soft: rgba(56, 189, 248, 0.14);
+      --gold: #f59e0b; --gold-soft: rgba(245, 158, 11, 0.14);
+      --green: #34d399; --green-soft: rgba(52, 211, 153, 0.14);
+      --red: #f87171; --red-soft: rgba(248, 113, 113, 0.14);
+      --purple: #a78bfa; --purple-soft: rgba(167, 139, 250, 0.14);
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      --svg-line: #cbd5e1;
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-code: #f1f5f9;
+      --text: #0f172a; --text-muted: #475569; --border: #e2e8f0;
+      --accent: #0284c7; --accent-soft: rgba(2, 132, 199, 0.10);
+      --gold: #d97706; --gold-soft: rgba(217, 119, 6, 0.10);
+      --green: #059669; --green-soft: rgba(5, 150, 105, 0.10);
+      --red: #dc2626; --red-soft: rgba(220, 38, 38, 0.10);
+      --purple: #7c3aed; --purple-soft: rgba(124, 58, 237, 0.10);
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --svg-line: #334155;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.72; font-size: 15px;
+    }
+    .layout { display: grid; grid-template-columns: 275px minmax(0, 1fr); max-width: 1420px; margin: 0 auto; min-height: 100vh; }
+    .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 26px 18px; border-right: 1px solid var(--border); background: var(--bg-elev); }
+    .brand { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .brand-title { font-weight: 700; font-size: 15px; color: var(--text); }
+    .brand-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .theme-btn { border: 1px solid var(--border); background: var(--bg-card); color: var(--text); border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .toc-group { margin-bottom: 14px; }
+    .toc-heading { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 12px 0 6px 8px; font-weight: 600; }
+    .toc a { display: block; padding: 6px 10px; border-radius: 7px; color: var(--text-muted); text-decoration: none; font-size: 13.2px; transition: all 0.15s ease; }
+    .toc a:hover, .toc a.active { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+    .main { padding: 36px 46px 80px; max-width: 1080px; }
+    .hero { background: linear-gradient(135deg, var(--bg-card), var(--bg-elev)); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-code); color: var(--text-muted); }
+    .badge.accent { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+    .badge.gold { color: var(--gold); background: var(--gold-soft); border-color: transparent; }
+    .badge.green { color: var(--green); background: var(--green-soft); border-color: transparent; }
+    .badge.purple { color: var(--purple); background: var(--purple-soft); border-color: transparent; }
+    .hero h1 { margin: 0 0 8px; font-size: 27px; line-height: 1.25; }
+    .hero p { margin: 0; color: var(--text-muted); font-size: 14.5px; }
+    section { margin-bottom: 48px; scroll-margin-top: 24px; }
+    h2 { font-size: 21px; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    h2 .part-tag { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+    h2 .part-tag.gold { background: var(--gold-soft); color: var(--gold); }
+    h2 .part-tag.green { background: var(--green-soft); color: var(--green); }
+    h2 .part-tag.purple { background: var(--purple-soft); color: var(--purple); }
+    h3 { font-size: 16.5px; margin: 22px 0 10px; color: var(--text); }
+    p { margin: 8px 0 12px; } ul, ol { margin: 8px 0 14px; padding-left: 22px; } li { margin-bottom: 6px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.88em; background: var(--bg-code); border: 1px solid var(--border); padding: 1px 6px; border-radius: 5px; color: var(--accent); }
+    .callout { border-left: 3.5px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 14px 0; font-size: 14px; }
+    .callout.gold { border-left-color: var(--gold); background: var(--gold-soft); }
+    .callout.green { border-left-color: var(--green); background: var(--green-soft); }
+    .callout-title { font-weight: 700; margin-bottom: 4px; display: block; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 13.5px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { background: var(--bg-code); font-weight: 600; color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 14px 0 20px; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px 18px; }
+    .card-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .svg-box { background: var(--bg-code); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin: 14px 0 20px; overflow: hidden; }
+    .svg-box svg { width: 100%; height: auto; display: block; }
+    .svg-caption { font-size: 12.5px; color: var(--text-muted); margin-top: 8px; text-align: center; }
+    .chk-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+    .chk-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); gap: 10px; flex-wrap: wrap; }
+    .chk-prog { font-size: 13px; color: var(--green); font-weight: 700; }
+    .chk-reset { border: 1px solid var(--border); background: var(--bg-code); color: var(--text-muted); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+    .chk-reset:hover { color: var(--accent); border-color: var(--accent); }
+    .chk-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 6px; border-bottom: 1px dashed var(--border); cursor: pointer; font-size: 14px; }
+    .chk-item:last-child { border-bottom: none; }
+    .chk-item input { margin-top: 4px; accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; }
+    .chk-item.done span { text-decoration: line-through; color: var(--text-muted); }
+    @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); } .main { padding: 24px 20px 60px; } .grid-2 { grid-template-columns: 1fr; } }
+</style>
+
+<style id="snr-mobile-enhance">
+  /* Mobile drawer, responsive tables & floating pill navigation */
+  #snr-float-bar {
+    position: fixed;
+    right: 14px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 9500;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(18, 24, 38, 0.90);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  }
+  html[data-theme="light"] #snr-float-bar {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(2, 132, 199, 0.30);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  }
+  .snr-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text, #e6edf7);
+    background: transparent;
+    border: 1px solid var(--border, #243047);
+    border-radius: 999px;
+    padding: 6px 11px;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.2;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .snr-pill-btn:active { transform: scale(0.96); }
+  #snr-toc-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 8, 16, 0.65);
+    z-index: 8990;
+  }
+  #snr-toc-backdrop.open { display: block; }
+  img, svg { max-width: 100%; }
+  @media (max-width: 960px) {
+    html, body { overflow-x: hidden; }
+    .main, main, .wrap, .container { max-width: 100% !important; padding-left: 14px !important; padding-right: 14px !important; padding-bottom: 86px !important; }
+    .hero { padding: 18px 16px !important; border-radius: 12px !important; }
+    .hero h1 { font-size: 21px !important; }
+    h2 { font-size: 18px !important; }
+    table {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .sidebar {
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      width: 82vw !important;
+      max-width: 310px !important;
+      z-index: 9000 !important;
+      transform: translateX(-105%);
+      transition: transform 0.22s ease;
+      box-shadow: 12px 0 36px rgba(0, 0, 0, 0.45);
+      border-bottom: none !important;
+    }
+    .sidebar.mobile-toc-open { transform: translateX(0) !important; }
+    .shot-grid, .shot-grid.three, .grid-2, .grid-3, .cards { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 961px) {
+    #snr-toc-btn { display: none !important; }
+  }
+</style>
+
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div>
+        <div class="brand-title">KangFx · 全体系总纲</div>
+        <div class="brand-sub">B站 12 课 + 油管 14 期总览</div>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()">明暗切换</button>
+    </div>
+    <nav class="toc">
+      <div class="toc-group">
+        <div class="toc-heading">核心框架与流程</div>
+        <a href="#arch">1. 三层嵌套 Top-Down 引擎图</a>
+        <a href="#lexicon">2. 白板原生术语与缩写词典</a>
+        <a href="#models">3. 全体系入场模型决策矩阵</a>
+      </div>
+      <div class="toc-group">
+        <div class="toc-heading">实战校验与跨流派融通</div>
+        <a href="#checklist">4. 盘前执行交互检查清单</a>
+        <a href="#tri-compare">5. 三大 MSNR 体系横向对照</a>
+        <a href="#index">6. 全部 26 支课程完整索引</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="hero">
+      <div class="hero-badges">
+        <span class="badge accent">全套 26 支系统视频总纲</span>
+        <span class="badge gold">Advanced MSNR + Kang Concept</span>
+        <span class="badge green">双流程图 + 三体系横向对照 + 交互清单</span>
+      </div>
+      <h1>KangFx Advanced MSNR &amp; Kang Concept 全体系串通总纲</h1>
+      <p>本总纲将 B 站正课前 12 集（<code>B01–B12</code>）与 YouTube 全部 14 期进阶专题（<code>Y01–Y14</code>，含最新 <code>Trapezoid QM</code>）合二为一，梳理底层收盘画线、高周期故事线、<code>FTFL→STFL→TTFL</code> 嵌套筛选、全入场模型触发边界与风控参数，并与同目录下的 <strong>MSNR 炼金术（1–6 篇）</strong> 及 <strong>Arif T（T8 / 2022）</strong> 建立精确坐标对照。</p>
+    </header>
+
+    <section id="arch">
+      <h2><span class="part-tag">架构 1</span> 自上而下三层嵌套工作流 &amp; Storyline 状态机</h2>
+      <div class="svg-box">
+        <svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg">
+          <rect width="940" height="310" fill="none"/>
+          <text x="16" y="24" fill="var(--text)" font-size="14" font-weight="700">流程 A：Storyline（方向引擎）→ FTFL Box → STFL Box → TTFL / Equilibrium + 风险管理</text>
+
+          <rect x="16" y="44" width="198" height="150" rx="10" fill="var(--bg-card)" stroke="var(--accent)"/>
+          <text x="28" y="68" fill="var(--accent)" font-size="13" font-weight="700">Step 1 · 确立 Storyline</text>
+          <text x="28" y="90" fill="var(--text)" font-size="12">X Rejects X → Y Breaks</text>
+          <text x="28" y="110" fill="var(--text-muted)" font-size="11.5">• 1M 影线拒 → 1W 破位</text>
+          <text x="28" y="128" fill="var(--text-muted)" font-size="11.5">• 1W 影线拒 → 1D 破位</text>
+          <text x="28" y="146" fill="var(--text-muted)" font-size="11.5">• 1D 影线拒 → 4H 破位</text>
+          <text x="28" y="168" fill="var(--gold)" font-size="11">红线：Y破位点须在拒前形成！</text>
+          <text x="28" y="184" fill="var(--text-muted)" font-size="11">支持 Fresh 与 Re-fresh</text>
+
+          <line x1="214" y1="118" x2="244" y2="118" stroke="var(--accent)" stroke-width="2"/>
+          <polygon points="244,118 236,113 236,123" fill="var(--accent)"/>
+
+          <rect x="246" y="44" width="218" height="150" rx="10" fill="var(--bg-card)" stroke="var(--gold)"/>
+          <text x="258" y="68" fill="var(--gold)" font-size="13" font-weight="700">Step 2 · 母周期选 FTFL 框</text>
+          <text x="258" y="90" fill="var(--text)" font-size="12">【初始阶段】Fresh S/R 优先</text>
+          <text x="258" y="108" fill="var(--text-muted)" font-size="11.5">Unfresh 则改选 sOCL / rOCL</text>
+          <text x="258" y="128" fill="var(--text)" font-size="12">【延续阶段】只看前一根PC</text>
+          <text x="258" y="146" fill="var(--text-muted)" font-size="11.5">• PC未破KL → 1 LAB OCL</text>
+          <text x="258" y="164" fill="var(--text-muted)" font-size="11.5">• PC已破KL → ab+ftQM 优先</text>
+          <text x="258" y="182" fill="var(--green)" font-size="11">紧邻下根K触及=Strong FTFL</text>
+
+          <line x1="464" y1="118" x2="494" y2="118" stroke="var(--gold)" stroke-width="2"/>
+          <polygon points="494,118 486,113 486,123" fill="var(--gold)"/>
+
+          <rect x="496" y="44" width="204" height="150" rx="10" fill="var(--bg-card)" stroke="var(--green)"/>
+          <text x="508" y="68" fill="var(--green)" font-size="13" font-weight="700">Step 3 · STFL 盒内过滤</text>
+          <text x="508" y="90" fill="var(--text)" font-size="12">1M→1W · 1W→D · 1D→4H</text>
+          <text x="508" y="110" fill="var(--text-muted)" font-size="11.5">• 严禁看FTFL框外杂波</text>
+          <text x="508" y="128" fill="var(--text-muted)" font-size="11.5">• 仅寻 S/R 或 QM（新近）</text>
+          <text x="508" y="146" fill="var(--red)" font-size="11.5">• 空盒 = 立即淘汰该 FTFL</text>
+          <text x="508" y="168" fill="var(--text-muted)" font-size="11">非新近旧位则禁挂，等确认</text>
+
+          <line x1="700" y1="118" x2="730" y2="118" stroke="var(--green)" stroke-width="2"/>
+          <polygon points="730,118 722,113 722,123" fill="var(--green)"/>
+
+          <rect x="732" y="44" width="192" height="150" rx="10" fill="var(--bg-card)" stroke="var(--purple)"/>
+          <text x="744" y="68" fill="var(--purple)" font-size="13" font-weight="700">Step 4 · TTFL 精修挂单</text>
+          <text x="744" y="90" fill="var(--text)" font-size="12">1W→1D · 1D→4H · 4H→1H</text>
+          <text x="744" y="110" fill="var(--text-muted)" font-size="11.5">• 小框找 S/R / QM</text>
+          <text x="744" y="128" fill="var(--text-muted)" font-size="11.5">• 无结构 → 50% Equilibrium</text>
+          <text x="744" y="146" fill="var(--text-muted)" font-size="11.5">• 异色线加 Spread Buffer</text>
+          <text x="744" y="168" fill="var(--gold)" font-size="11">SL: Gold 3p | UJ 5.5-7p</text>
+          <text x="744" y="184" fill="var(--text-muted)" font-size="11">TP 查同周期 Roadblocks</text>
+
+          <rect x="16" y="212" width="908" height="82" rx="10" fill="var(--bg-card)" stroke="var(--border)"/>
+          <text x="30" y="236" fill="var(--gold)" font-size="12.5" font-weight="700">关键保护规则汇总：</text>
+          <text x="30" y="258" fill="var(--text-muted)" font-size="12">① Daily 与 Weekly 机会共存时，市场优先使用更近的 Daily；② 若价格次日/次周未触及 FTFL（Weak FTFL），失效概率 80%，风险降至 20% 或改等 Confirmation Entry；</text>
+          <text x="30" y="278" fill="var(--text-muted)" font-size="12">③ 强动能下用 70/30 分仓（70% EQ/极值 + 30% Body）防踏空；④ 止盈检查严格“同周期对齐”：周线单只看周线障碍，日线单只看日线障碍。</text>
+        </svg>
+        <div class="svg-caption">图 1：KangFx Advanced MSNR 主干工作流——高周期定位叙事，三层框法将止损压至 3–7 pips。</div>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 940 270" xmlns="http://www.w3.org/2000/svg">
+          <rect width="940" height="270" fill="none"/>
+          <text x="16" y="24" fill="var(--text)" font-size="14" font-weight="700">流程 B：六大入场模型（Entry Models）场景触发路由</text>
+
+          <rect x="16" y="44" width="290" height="94" rx="10" fill="var(--bg-card)" stroke="var(--accent)"/>
+          <text x="28" y="66" fill="var(--accent)" font-size="12.5" font-weight="700">1. 14b Entry Model（同周期确认）</text>
+          <text x="28" y="86" fill="var(--text-muted)" font-size="11.5">站在 D1/W1/M1 关键位上，1H/4H 出现</text>
+          <text x="28" y="103" fill="var(--text-muted)" font-size="11.5">自我拒绝 + 突破（S/R 占90%+，少数 ftQM）</text>
+          <text x="28" y="122" fill="var(--green)" font-size="11">急剧回踩 EQ 入场；中途磨蹭新造结构则弃</text>
+
+          <rect x="325" y="44" width="290" height="94" rx="10" fill="var(--bg-card)" stroke="var(--gold)"/>
+          <text x="337" y="66" fill="var(--gold)" font-size="12.5" font-weight="700">2. D1W4（D(1,2) &amp; W(2,4) 高低联动）</text>
+          <text x="337" y="86" fill="var(--text-muted)" font-size="11.5">LTF 用纯影线(100%)或单根实体(50%)触及</text>
+          <text x="337" y="103" fill="var(--text-muted)" font-size="11.5">HTF 关键位后 Apex Breakout（多根破=作废）</text>
+          <text x="337" y="122" fill="var(--green)" font-size="11">S/R 主仓(80-100%) + QM 辅仓(20%)</text>
+
+          <rect x="634" y="44" width="290" height="94" rx="10" fill="var(--bg-card)" stroke="var(--purple)"/>
+          <text x="646" y="66" fill="var(--purple)" font-size="12.5" font-weight="700">3. Trapezoid QM（无需等 Apex 突破）</text>
+          <text x="646" y="86" fill="var(--text-muted)" font-size="11.5">直接打破内部 SBR(做多) 或 RBS(做空)</text>
+          <text x="646" y="103" fill="var(--text-muted)" font-size="11.5">紧邻下一根 K 线必须立刻回踩，否则作废</text>
+          <text x="646" y="122" fill="var(--green)" font-size="11">逆主线时 TP 严设 Body；W1不低2H/4H</text>
+
+          <rect x="16" y="154" width="290" height="98" rx="10" fill="var(--bg-card)" stroke="var(--purple)"/>
+          <text x="28" y="176" fill="var(--purple)" font-size="12.5" font-weight="700">4. Three Wise Men (TWM · 1-2-3)</text>
+          <text x="28" y="196" fill="var(--text-muted)" font-size="11.5">方法一：第1 S/R被实体破位(第2点)→破高低(第3)</text>
+          <text x="28" y="213" fill="var(--text-muted)" font-size="11.5">→回踩Fresh第1点；方法二：TWM被穿透改主线</text>
+          <text x="28" y="232" fill="var(--green)" font-size="11">不回新QM，直接踩原Fresh TWM 起飞</text>
+
+          <rect x="325" y="154" width="290" height="98" rx="10" fill="var(--bg-card)" stroke="var(--green)"/>
+          <text x="337" y="176" fill="var(--green)" font-size="12.5" font-weight="700">5. Q-Top（QM 权力转移 · ~80%）</text>
+          <text x="337" y="196" fill="var(--text-muted)" font-size="11.5">破 Apex 之前，价格先反向越过旧 QM</text>
+          <text x="337" y="213" fill="var(--text-muted)" font-size="11.5">再由新内部 S/R 发动总攻突破 Apex</text>
+          <text x="337" y="232" fill="var(--red)" font-size="11">旧 QM 彻底作废，改打接收权力的新位</text>
+
+          <rect x="634" y="154" width="290" height="98" rx="10" fill="var(--bg-card)" stroke="var(--accent)"/>
+          <text x="646" y="176" fill="var(--accent)" font-size="12.5" font-weight="700">6. Non-Floating Filter（去悬空）</text>
+          <text x="646" y="196" fill="var(--text-muted)" font-size="11.5">看涨突破前须先深刺入前 RBS 下方；</text>
+          <text x="646" y="213" fill="var(--text-muted)" font-size="11.5">看跌前须先深刺入前 SBR 上方（悬空80%败）</text>
+          <text x="646" y="232" fill="var(--green)" font-size="11">每段独立检验；优先 Fresh QM；长影取0.5</text>
+        </svg>
+        <div class="svg-caption">图 2：从标准确认入场到 Kang Concept 原创高阶入场模型的路由与过滤边界。</div>
+      </div>
+    </section>
+
+    <section id="lexicon">
+      <h2><span class="part-tag">术语</span> 白板原生缩写与精确定义词典（100% 对照原画面）</h2>
+      <table>
+        <thead><tr><th>白板缩写 / 术语</th><th>英文全称</th><th>精确含义与出现课程</th></tr></thead>
+        <tbody>
+          <tr><td><code>1 LAB OCL</code></td><td>1 Level Above or Below OCL</td><td>仅限 M1/W1/D1；紧邻上一格/下一格必须是另一 OCL 或 RBS/SBR，绝不能是原生 S/R（B02、B06、Y08）。</td></tr>
+          <tr><td><code>sOCL / rOCL</code></td><td>Support OCL / Resistance OCL</td><td>紧邻支撑/阻力形成且满足特定实体覆盖的强 OCL（初始 Storyline 无合适 S/R 时启用；普通 <code>Engulf OCL</code> 已淘汰，B02、B05）。</td></tr>
+          <tr><td><code>lsOCL</code></td><td>Left Side OCL</td><td>被两次突破的 OCL，发挥类似 QM 作用；顺主线周线表现约 90%，止盈看 Apex Body/Wick（B02、Y07）。</td></tr>
+          <tr><td><code>Apex / iab-S/R</code></td><td>External Apex &amp; Internal Apex Break</td><td>折线图上实际引发突破的外部极端峰谷（Apex）与内部引发突破点（iab）；未引发突破者彻底无效（B03）。</td></tr>
+          <tr><td><code>abQM / ftQM / stQM / iabQM / iQM</code></td><td>Apex Break / First time / Second time / Internal Apex Break / Invalid QM</td><td>延续阶段破位后按 <code>abQM + ftQM</code> 最高优先，其次 <code>ftQM / stQM</code>；<code>iabQM</code> 常先于外部 QM 触发；<code>iQM</code> 无效（B03、B06）。</td></tr>
+          <tr><td><code>FTFL / STFL / TTFL</code></td><td>1st / 2nd / 3rd Timeframe Level/Line</td><td>大框架目标（FTFL）→ 框内买卖区（STFL）→ 框内微缩挂单/50%均衡点（TTFL）（B05–B08）。</td></tr>
+          <tr><td><code>Fresh / Unfresh / Re-fresh</code></td><td>新鲜 / 非新鲜 / 恢复新鲜</td><td>未被触及穿透为 Fresh；穿透失效后，同级 K 线实体重收至有效一侧即 Re-fresh（B04）。</td></tr>
+          <tr><td><code>14b Entry Model</code></td><td>1H &amp; 4H Breakout Confirmation Model</td><td>在 HTF 关键位上，1H/4H 自我拒绝+突破后急剧回踩均衡点（B09、B12）。</td></tr>
+          <tr><td><code>D1W4</code></td><td>Daily+1H/2H &amp; Weekly+4H/2H Model</td><td>纯影线 100% / 单根实体 50% / 多根作废；<code>S/R</code> 优先于 <code>QM</code>（B12、Y12）。</td></tr>
+          <tr><td><code>TWM / Q-Top / Trapezoid QM</code></td><td>Three Wise Men / QM Transfer of Power / 梯形 QM</td><td>Kang Concept 三大原创进阶形态，无需死等大周期缓慢反转或突破外部 Apex（Y09–Y11、Y14）。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="models">
+      <h2><span class="part-tag gold">矩阵</span> 全套入场模型与止损止盈参数对照表</h2>
+      <table>
+        <thead><tr><th>模型</th><th>高周期背景要求</th><th>核心过滤与失效红线</th><th>典型 SL / 风险分配</th><th>TP 目标规律</th></tr></thead>
+        <tbody>
+          <tr><td><strong>标准嵌套<br><code>FTFL→STFL→TTFL</code></strong></td><td>Storyline（<code>X rejects X → Y breaks</code>）或同周期突破</td><td>• Strong FTFL 须下一根 K 线直达（否则 80% 失效）；<br>• STFL 须新近形成且在 FTFL 盒内。</td><td>• Gold <code>3 pips + 0.3~0.5p</code> 缓冲<br>• UJ <code>5.5~7p + 0.5~1.0p</code><br>• BTC <code>250~300p</code></td><td>查同周期 Roadblocks；遇障平 <code>80%</code>；周线可拿到前周高低收 <code>1:40–1:100</code>。</td></tr>
+          <tr><td><strong><code>14b Entry Model</code></strong><br>（Confirmation）</td><td>必须踩在 <code>D1/W1/M1</code> 有效关键位上</td><td>• 90%+ 源自 <code>S/R</code>；<br>• 突破后必须<strong>急剧回踩</strong>（中途震荡造结构作废）；<br>• 不可二次追进。</td><td><code>70/30 分仓</code>：<br>70% 挂 EQ/极值 + 30% 挂实体。</td><td>顺主线拿向高周期下个关键位；逆主线首个关键位减仓。</td></tr>
+          <tr><td><strong><code>D1W4</code></strong><br><code>D(1,2) / W(2,4)</code></td><td>D1/W1 Fresh 关键位（不代表 Storyline 反转）</td><td>• LTF 纯影线 <code>100%</code> / 单根实体 <code>50%</code> / 多根破作废；<br>• 突破高低点须在触及 HTF 之前形成。</td><td>S/R 主力（<code>80–100%</code>）+ QM 辅助（<code>20%</code>），取 1H EQ。</td><td>最低 <code>1:8+</code>；逆主线做回调严守最近 D1/W1 关键位。</td></tr>
+          <tr><td><strong><code>TWM</code> 方法 1 &amp; 2</strong></td><td>D1/W1 结构清晰（方法2为 TWM 被穿透改主线）</td><td>• 第 2 点须<strong>实体破位</strong>第 1 RBS/SBR；<br>• 第 1 点须 Fresh；须等第 3 点破高/低成型。</td><td>下切精细化（如 UJ ~7p）。</td><td>TP1 = 回踩前最后 S/R <strong>实体</strong>；TP2 = 对应高/低点（<code>1:20–1:40+</code>）。</td></tr>
+          <tr><td><strong><code>Q-Top</code> &amp; <code>Non-Floating</code></strong></td><td>结构推进或反转前</td><td>• Q-Top：越过旧 QM 必须发生在破 Apex 前（旧 QM 作废）；<br>• Non-Floating：每段须亲自深刺 RBS/SBR。</td><td>精细化至 1H/小周期后按标准紧 SL；Fresh QM 优先于 S/R。</td><td>Q-Top 看出发点（<code>1:15+</code>）；长影目标先看 <strong>50% Equilibrium</strong>。</td></tr>
+          <tr><td><strong><code>Trapezoid QM</code></strong></td><td>任意大背景内部打破 SBR/RBS</td><td>• <strong>紧邻下一根 K 线必须立刻回踩</strong>（先打 TP 再回必废）；<br>• W1 不低 <code>2H/4H</code>，D1 不低 <code>1H/2H</code>。</td><td>高周期锁定结构后严守精修下限，配合常规过滤下单。</td><td><strong>逆主线强制设在目标位 Body 实体处</strong>；顺势可看高/低点。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="checklist">
+      <h2><span class="part-tag green">SOP</span> 盘前交互式执行检查清单（自动保存本地进度）</h2>
+      <div class="chk-wrap">
+        <div class="chk-head">
+          <div class="chk-prog" id="chk-prog">已完成 0 / 8 项</div>
+          <button class="chk-reset" onclick="resetChecklist()">重置全部勾选</button>
+        </div>
+        <label class="chk-item"><input type="checkbox"><span><strong>1. 数据源与画线校验</strong>：外汇优先核对 <code>Forex.com</code> 报价，所有支撑/阻力水平线严格锚定在 K 线<strong>收盘价</strong>（无视跳空高开/低开移动）。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>2. 高周期 Storyline 判定（40秒）</strong>：只在 Weekly/Daily（或月线）检查 <code>X rejects X（纯影线）→ Y breaks</code>，确认突破目标点在拒绝<strong>之前</strong>已形成；Daily 与 Weekly 同在时优先 Daily。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>3. 阶段匹配挑选 FTFL</strong>：初始阶段选 Fresh S/R（Unfresh 则转 <code>sOCL/rOCL</code>）；延续阶段只查前一根已收盘 PC（未破 KL 选 <code>1 LAB OCL</code>，已破 KL 优先 <code>ab+ftQM</code> 剔除普通 RBS/SBR）。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>4. Strong vs Weak 时效过滤</strong>：确认是否紧邻下一根高周期 K 线触及 FTFL；若错过首周/首日（80% 失效概率），取消全仓限价单，改等 Confirmation 或降风控至 20%。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>5. FTFL→STFL→TTFL 盒内精修</strong>：切入 STFL 检查 FTFL 框内是否有新近有效 S/R 或 QM（空盒淘汰）；切 TTFL 若无关键位则取 STFL 框 <code>50% Equilibrium</code>。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>6. 高阶结构防坑核对</strong>：检查是否属于 <code>Floating 悬空位</code>（未深刺 RBS/SBR）、是否发生 <code>Q-Top 权力转移</code> 令旧 QM 失效、D1W4 是否超出单根实体刺破极限。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>7. 点差缓冲与分仓风控</strong>：在 TTFL 挂单线上用<strong>异色线</strong>向现价预留 Spread Buffer（UJ <code>+0.5~1.0p</code> / Gold <code>+0.3~0.5p</code>）；强动能采用 <code>70/30</code> 或 S/R+QM <code>80/20</code> 拆分。</span></label>
+        <label class="chk-item"><input type="checkbox"><span><strong>8. 同周期 Roadblocks 与止盈方案</strong>：Weekly 单只看周线障碍（拿到前周高低收），Daily 单只看日线障碍；逆 Storyline 交易（如逆向 Trapezoid QM / D1 回调）将 TP 严设在最近关键位或目标 Body 实体。</span></label>
+      </div>
+    </section>
+
+    <section id="tri-compare">
+      <h2><span class="part-tag purple">融通</span> 三大 MSNR 体系横向对照（KangFx vs 炼金术 1–6 vs Arif T）</h2>
+      <p>以下对照严格基于本工作区已核验的《MSNR 炼金术 Part 1–6》、《Arif T Batch T8 &amp; 2022 实战篇》与本套《KangFx 26 集》原课内容，辅助精准融合互补、严禁混用冲突规则：</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:15%;">对比维度</th>
+            <th style="width:29%;">KangFx Advanced MSNR &amp; Kang Concept</th>
+            <th style="width:28%;">MSNR 炼金术（Alchemy Part 1–6）</th>
+            <th style="width:28%;">Arif T（Batch T8 + 2022 Mentorship）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>主导周期架构</strong></td>
+            <td><code>M1 / W1 / D1</code> 定 Storyline；<code>FTFL → STFL → TTFL</code> 严格盒内嵌套；专题拓展至 <code>D(1,2) / W(2,4)</code>。</td>
+            <td>完整 <code>MN → W1 → D1 → H4</code> 自上而下（D1+H4 共振）+ <code>H1</code> 确认与 <code>M15</code> 降噪。</td>
+            <td>2022 版<strong>剔除 MN</strong>，严格 <code>W1 → D1 → H4 → H1</code> 四级 + <code>M5/M1</code> 吞没放大镜；H1/H4 须第 2 层及以上。</td>
+          </tr>
+          <tr>
+            <td><strong>画线与形态基准</strong></td>
+            <td>严守“<strong>全画在 K 线收盘价</strong>”，重用 <code>Line Chart</code> 辨 <code>Apex / iab</code>；趋势线完全弃用。</td>
+            <td>重 <code>OC</code>（同色交界）、<code>RBS/SBR + TL 联姻</code>、<code>Left Shoulder (QML)</code> 与实体突破确认。</td>
+            <td>分体收线/影线；极度看重 <code>Breakout / Gap / HNS / Miss</code> 与 <code>The Codex</code> 趋势线（T8）/ <code>Wick Candle 3 变体</code>（2022）。</td>
+          </tr>
+          <tr>
+            <td><strong>OCL / Gap 定义</strong></td>
+            <td>OCL 分四类（<code>1 LAB OCL / sOCL / rOCL / lsOCL</code>），淘汰 <code>Engulf OCL</code>，<strong>严禁在 4H 及以下使用 OCL</strong>。</td>
+            <td>将同色两根交界称 <code>OC</code> 作为隐藏水平位，配合 M15 精修。</td>
+            <td>称同色交界为 <code>Gap</code>；T8 重 <code>IC</code> 同向收盘色，2022 重 H1 Gap 首 K 为 <code>Wick Candle</code> 3 变体，无周期禁止线。</td>
+          </tr>
+          <tr>
+            <td><strong>核心入场触发</strong></td>
+            <td><code>TTFL 盒内 S/R / QM / 50% Equilibrium</code>、<code>14b</code>、<code>D1W4</code>、<code>TWM 1&amp;2</code>、<code>Q-Top</code>、<code>Trapezoid QM</code>。</td>
+            <td><code>H4+H1</code> 低风险确认入场（4h 窗口）、<code>EU/GU</code> 伦敦盘 <code>PO3</code>、激进 W1/D1 接飞刀（<code>0.3%</code> 拆分）。</td>
+            <td><code>First Touch + Breakout</code>、<code>D1/W1 触后首 HNS</code> 例外、双线（非 Zone，间隔 <code>10–20p</code>）挂单 + M5 早撤。</td>
+          </tr>
+          <tr>
+            <td><strong>止损与盈亏比特征</strong></td>
+            <td>极紧 SL（Gold <code>3p</code>、UJ <code>5.5–7p</code>）+ <strong>Spread Buffer</strong>，常博 <code>1:15 ~ 1:50+</code>（单周可叠加 1:200）。</td>
+            <td>Low Risk <code>1%</code> 风险配 Gold <code>15–25p</code> / EU <code>5–7p</code> / GU <code>7–10p</code>，常规 <code>1:3 ~ 1:5</code>；High Risk 拿 <code>150–300p+</code>。</td>
+            <td>每条线固定 <strong><code>10 pip SL</code></strong>（双线封顶 <code>20p</code>），最低门槛 <code>≥ 50 pips (1:5+)</code>，撞 D1/W1 全平。</td>
+          </tr>
+          <tr>
+            <td><strong>时段与时段风控</strong></td>
+            <td>聚焦周初/日初高周期收盘与 Strong FTFL 时效，不依赖复杂盘中时段模型（如有钟点表述统一对应纽约时间 <code>EST/EDT</code>）。</td>
+            <td>深绑伦敦开盘/美盘数据（统一折算纽约时间 <code>EST/EDT</code>）与 <code>Asian H/L / PO3</code>。</td>
+            <td>T8 在重磅数据（如纽约时间 <code>08:30 EST/EDT</code>）前后执行 <strong>1 小时 Cooldown</strong>；2022 淡化钟点重 Freshness。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout green">
+        <span class="callout-title">跨体系协同建议（纯 MSNR 原生互补）</span>
+        • <strong>大方向与选区</strong>：优先用 KangFx 的 <code>X Rejects X → Y Breaks</code> + <code>Continuation PC 检查 (1 LAB OCL / ab+ftQM)</code> + <code>Strong FTFL 时效</code> 锁定最具动能的高周期框；<br>
+        • <strong>过滤悬空与陷阱</strong>：利用 KangFx 的 <code>Non-Floating</code>、<code>Q-Top</code>、<code>TWM</code> 识别散户容易被打损或踏空的位置；<br>
+        • <strong>执行与风控匹配</strong>：若追求极紧极高 R:R（<code>1:15–1:50</code>）且接受较高踏空率，采用 KangFx <code>TTFL Equilibrium + Spread Buffer (3–7p SL)</code>；若需提高成交率与 Prop Firm 平稳度，可借鉴炼金术的 <code>H4+H1</code>（<code>15–25p SL</code>，<code>1:3–1:5</code>）或 Arif T 的 <code>双线 10p SL</code> 策略。
+      </div>
+    </section>
+
+    <section id="index">
+      <h2><span class="part-tag">索引</span> 全部 26 支源视频完整目录索引</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">B 站正课前 12 节（合集 KangFxMsnrKing）</div>
+          <table>
+            <thead><tr><th>编号</th><th>BVID</th><th>节次与分册归属</th></tr></thead>
+            <tbody>
+              <tr><td><code>B01</code></td><td><code>BV13kPWz2EWU</code></td><td>第一节 6种基础水平位（Part 1–6）</td></tr>
+              <tr><td><code>B02</code></td><td><code>BV1atP4zXE39</code></td><td>第二节 四种OC水平位（Part 1–6）</td></tr>
+              <tr><td><code>B03</code></td><td><code>BV18hP4zDEEu</code></td><td>第三节 四种峰值和QM水平位（Part 1–6）</td></tr>
+              <tr><td><code>B04</code></td><td><code>BV1ShP4zDEb3</code></td><td>第四节 故事线（Part 1–6）</td></tr>
+              <tr><td><code>B05</code></td><td><code>BV1eWP4zxEgx</code></td><td>第五节 第一时间框架 1（Part 1–6）</td></tr>
+              <tr><td><code>B06</code></td><td><code>BV1xzP4zLErz</code></td><td>第六节 第一时间框架 2（Part 1–6）</td></tr>
+              <tr><td><code>B07</code></td><td><code>BV1xzP4zLEra</code></td><td>第七节 第二时间框架（Part 7–12）</td></tr>
+              <tr><td><code>B08</code></td><td><code>BV1nKNgzoEtu</code></td><td>第八节 第三时间框架（Part 7–12）</td></tr>
+              <tr><td><code>B09</code></td><td><code>BV1YsNgzyEKZ</code></td><td>第九节 确认入场（Part 7–12）</td></tr>
+              <tr><td><code>B10</code></td><td><code>BV13sNgzyEZK</code></td><td>第十节 多时间框架自上而下分析（Part 7–12）</td></tr>
+              <tr><td><code>B11</code></td><td><code>BV1j7NgzJEGk</code></td><td>第十一节 强势FTFL（Part 7–12）</td></tr>
+              <tr><td><code>B12</code></td><td><code>BV1i7NgzJE6n</code></td><td>第十二节 入场模型 14b &amp; D1W4（Part 7–12）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">YouTube @Kang_fx 全部 14 期普通视频</div>
+          <table>
+            <thead><tr><th>编号</th><th>Video ID</th><th>视频标题（全部收录于油管进阶专题册）</th></tr></thead>
+            <tbody>
+              <tr><td><code>Y01</code></td><td><code>9ApnArGw_ZE</code></td><td>How to Identify KEY LEVELS</td></tr>
+              <tr><td><code>Y02</code></td><td><code>9wq98a1wufo</code></td><td>The Best Timeframe for analysing Advanced MSNR</td></tr>
+              <tr><td><code>Y03</code></td><td><code>43BoRjSL1Aw</code></td><td>MSNR Storyline Simplified (Real Charts)</td></tr>
+              <tr><td><code>Y04</code></td><td><code>P7N1jVvuheA</code></td><td>Directional Bias in 40 seconds</td></tr>
+              <tr><td><code>Y05</code></td><td><code>INegDXMhRfs</code></td><td>How I Made 1:200 RR in ONE WEEK</td></tr>
+              <tr><td><code>Y06</code></td><td><code>XprwRrVrO9Q</code></td><td>Liquidity Strategy Critique</td></tr>
+              <tr><td><code>Y07</code></td><td><code>M8WGrEHE6ow</code></td><td>Types of OCL Part 1 (LS OCL)</td></tr>
+              <tr><td><code>Y08</code></td><td><code>Hk37lWm_N8s</code></td><td>Types of OCL Part 2 (One Lap OCL)</td></tr>
+              <tr><td><code>Y09</code></td><td><code>8AmBqn1nCeY</code></td><td>Three Wise Men (TWM) Part 1</td></tr>
+              <tr><td><code>Y10</code></td><td><code>JUqdZOavFTI</code></td><td>Three Wise Men (TWM) Part 2</td></tr>
+              <tr><td><code>Y11</code></td><td><code>ijHUL4D9TdU</code></td><td>QM Transfer of Power (Q-Top)</td></tr>
+              <tr><td><code>Y12</code></td><td><code>fEav90H0A7Q</code></td><td>D1W4: Top Entry Model</td></tr>
+              <tr><td><code>Y13</code></td><td><code>I8RembpaRss</code></td><td>Floating &amp; Non-Floating Valid Entry</td></tr>
+              <tr><td><code>Y14</code></td><td><code>WgS_YxTBdVk</code></td><td>TRAPEZOID QM: Top Entry Model</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:40px;padding-top:18px;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);text-align:center;">
+      KangFx Advanced MSNR &amp; Kang Concept · 26 支教学视频全体系串通总纲 · 纯知识体系汇总
+    </footer>
+  </main>
+</div>
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('kangfx_theme', next);
+  }
+  const saved = localStorage.getItem('kangfx_theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  const KEY = 'kangfx_pretrade_chk_v1';
+  const boxes = [...document.querySelectorAll('.chk-item input')];
+  function syncProg() {
+    const state = boxes.map(b => b.checked);
+    localStorage.setItem(KEY, JSON.stringify(state));
+    const n = state.filter(Boolean).length;
+    document.getElementById('chk-prog').textContent = `已完成 ${n} / ${boxes.length} 项`;
+    boxes.forEach(b => b.closest('.chk-item').classList.toggle('done', b.checked));
+  }
+  try {
+    const prev = JSON.parse(localStorage.getItem(KEY) || '[]');
+    boxes.forEach((b, i) => { b.checked = Boolean(prev[i]); });
+  } catch (e) {}
+  boxes.forEach(b => b.addEventListener('change', syncProg));
+  syncProg();
+  function resetChecklist() { boxes.forEach(b => b.checked = false); syncProg(); }
+
+  const links = document.querySelectorAll('.toc a');
+  const sections = [...document.querySelectorAll('section')];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-18% 0px -72% 0px' });
+  sections.forEach(sec => observer.observe(sec));
+</script>
+
+<script id="snr-mobile-script">
+(() => {
+  try {
+    const t = localStorage.getItem('snr_theme') || localStorage.getItem('kangfx_theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    const tb = document.querySelector('.theme-btn');
+    if (tb) {
+      tb.addEventListener('click', () => {
+        setTimeout(() => {
+          const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+          localStorage.setItem('snr_theme', cur);
+          localStorage.setItem('kangfx_theme', cur);
+        }, 0);
+      });
+    }
+  } catch (e) {}
+
+  const sidebar = document.querySelector('.sidebar');
+  const bar = document.createElement('div');
+  bar.id = 'snr-float-bar';
+
+  const home = document.createElement('a');
+  home.className = 'snr-pill-btn';
+  home.href = '../index.html';
+  home.textContent = '🏠 首页';
+  bar.appendChild(home);
+
+  if (sidebar) {
+    const backdrop = document.createElement('div');
+    backdrop.id = 'snr-toc-backdrop';
+    document.body.appendChild(backdrop);
+
+    const tocBtn = document.createElement('button');
+    tocBtn.id = 'snr-toc-btn';
+    tocBtn.className = 'snr-pill-btn';
+    tocBtn.type = 'button';
+    tocBtn.textContent = '📑 目录';
+    const closeToc = () => {
+      sidebar.classList.remove('mobile-toc-open');
+      backdrop.classList.remove('open');
+    };
+    tocBtn.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('mobile-toc-open');
+      backdrop.classList.toggle('open', open);
+    });
+    backdrop.addEventListener('click', closeToc);
+    sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeToc));
+    bar.appendChild(tocBtn);
+  }
+
+  const topBtn = document.createElement('button');
+  topBtn.className = 'snr-pill-btn';
+  topBtn.type = 'button';
+  topBtn.textContent = '↑';
+  topBtn.setAttribute('aria-label', '返回顶部');
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  bar.appendChild(topBtn);
+
+  document.body.appendChild(bar);
+})();
+</script>
+
+</body>
+</html>
