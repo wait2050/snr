@@ -854,7 +854,7 @@
 <script id="snr-mobile-script">
 (() => {
   try {
-    const t = localStorage.getItem('snr_theme') || localStorage.getItem('kangfx_theme');
+    const t = localStorage.getItem('snr_theme') || localStorage.getItem('arift_theme') || localStorage.getItem('kangfx_theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
     const tb = document.querySelector('.theme-btn');
     if (tb) {
@@ -862,6 +862,7 @@
         setTimeout(() => {
           const cur = document.documentElement.getAttribute('data-theme') || 'dark';
           localStorage.setItem('snr_theme', cur);
+          localStorage.setItem('arift_theme', cur);
           localStorage.setItem('kangfx_theme', cur);
         }, 0);
       });

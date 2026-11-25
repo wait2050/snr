@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arif T 全体系串通总纲 · 22 集知识图谱与交互盘前清单</title>
+  <style>
+    :root {
+      --bg: #0b0f17; --bg-elev: #121826; --bg-card: #161e2e; --bg-code: #0d1320;
+      --text: #e6edf7; --text-muted: #93a1b8; --border: #243047;
+      --accent: #38bdf8; --accent-soft: rgba(56, 189, 248, 0.14);
+      --gold: #f59e0b; --gold-soft: rgba(245, 158, 11, 0.14);
+      --green: #34d399; --green-soft: rgba(52, 211, 153, 0.14);
+      --red: #f87171; --red-soft: rgba(248, 113, 113, 0.14);
+      --purple: #a78bfa; --purple-soft: rgba(167, 139, 250, 0.14);
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      --svg-line: #cbd5e1;
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-code: #f1f5f9;
+      --text: #0f172a; --text-muted: #475569; --border: #e2e8f0;
+      --accent: #0284c7; --accent-soft: rgba(2, 132, 199, 0.10);
+      --gold: #d97706; --gold-soft: rgba(217, 119, 6, 0.10);
+      --green: #059669; --green-soft: rgba(5, 150, 105, 0.10);
+      --red: #dc2626; --red-soft: rgba(220, 38, 38, 0.10);
+      --purple: #7c3aed; --purple-soft: rgba(124, 58, 237, 0.10);
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --svg-line: #334155;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.72; font-size: 15px;
+    }
+    .layout { display: grid; grid-template-columns: 278px minmax(0, 1fr); max-width: 1420px; margin: 0 auto; min-height: 100vh; }
+    .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 26px 18px; border-right: 1px solid var(--border); background: var(--bg-elev); }
+    .brand { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .brand-title { font-weight: 700; font-size: 15px; color: var(--text); }
+    .brand-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .theme-btn { border: 1px solid var(--border); background: var(--bg-card); color: var(--text); border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .toc-group { margin-bottom: 14px; }
+    .toc-heading { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 12px 0 6px 8px; font-weight: 600; }
+    .toc a { display: block; padding: 6px 10px; border-radius: 7px; color: var(--text-muted); text-decoration: none; font-size: 13px; transition: all 0.15s ease; }
+    .toc a:hover, .toc a.active { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+    .main { padding: 36px 46px 80px; max-width: 1060px; }
+    .hero { background: linear-gradient(135deg, var(--bg-card), var(--bg-elev)); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-code); color: var(--text-muted); }
+    .badge.accent { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+    .badge.gold { color: var(--gold); background: var(--gold-soft); border-color: transparent; }
+    .badge.green { color: var(--green); background: var(--green-soft); border-color: transparent; }
+    .badge.purple { color: var(--purple); background: var(--purple-soft); border-color: transparent; }
+    .hero h1 { margin: 0 0 8px; font-size: 27px; line-height: 1.25; }
+    .hero p { margin: 0; color: var(--text-muted); font-size: 14.5px; }
+    section { margin-bottom: 48px; scroll-margin-top: 24px; }
+    h2 { font-size: 21px; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    h2 .part-tag { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+    h2 .part-tag.gold { background: var(--gold-soft); color: var(--gold); }
+    h2 .part-tag.green { background: var(--green-soft); color: var(--green); }
+    h2 .part-tag.purple { background: var(--purple-soft); color: var(--purple); }
+    h2 .part-tag.red { background: var(--red-soft); color: var(--red); }
+    h3 { font-size: 16.5px; margin: 22px 0 10px; color: var(--text); }
+    p { margin: 8px 0 12px; } ul, ol { margin: 8px 0 14px; padding-left: 22px; } li { margin-bottom: 6px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.88em; background: var(--bg-code); border: 1px solid var(--border); padding: 1px 6px; border-radius: 5px; color: var(--accent); }
+    .formula-bar { background: var(--bg-card); border: 1px solid var(--accent); border-radius: 12px; padding: 13px 18px; margin: 14px 0 20px; text-align: center; font-weight: 700; font-size: 14.5px; }
+    .formula-bar span { color: var(--gold); margin: 0 6px; }
+    .callout { border-left: 3.5px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 14px 0; font-size: 14px; }
+    .callout.gold { border-left-color: var(--gold); background: var(--gold-soft); }
+    .callout.green { border-left-color: var(--green); background: var(--green-soft); }
+    .callout.red { border-left-color: var(--red); background: var(--red-soft); }
+    .callout.purple { border-left-color: var(--purple); background: var(--purple-soft); }
+    .callout-title { font-weight: 700; margin-bottom: 4px; display: block; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 13.6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { background: var(--bg-code); font-weight: 600; color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 14px 0 20px; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px 18px; }
+    .card-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .svg-box { background: var(--bg-code); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin: 14px 0 20px; overflow: hidden; }
+    .svg-box svg { width: 100%; height: auto; display: block; }
+    .svg-caption { font-size: 12.5px; color: var(--text-muted); margin-top: 8px; text-align: center; }
+    .shot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 16px 0 22px; }
+    .shot-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.15s ease, border-color 0.15s ease; }
+    .shot-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .shot-card img { width: 100%; height: auto; display: block; cursor: zoom-in; border-bottom: 1px solid var(--border); }
+    .shot-cap { padding: 10px 14px; font-size: 12.8px; color: var(--text-muted); }
+    .shot-cap strong { display: block; font-size: 13.2px; margin-bottom: 3px; color: var(--text); }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(6, 10, 18, 0.92); z-index: 9999; align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 95vw; max-height: 92vh; border-radius: 10px; border: 1px solid var(--border); }
+    .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(20, 28, 44, 0.85); color: #fff; border: 1px solid #334155; border-radius: 999px; width: 42px; height: 42px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .lb-prev { left: 18px; } .lb-next { right: 18px; }
+    .lb-cap { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); background: rgba(15, 23, 42, 0.88); color: #e2e8f0; padding: 6px 14px; border-radius: 8px; font-size: 13px; max-width: 85vw; text-align: center; }
+    @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); } .main { padding: 24px 20px 60px; } .grid-2, .shot-grid { grid-template-columns: 1fr; } }
+
+    .chk-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+    .chk-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); gap: 10px; flex-wrap: wrap; }
+    .chk-prog { font-size: 13px; color: var(--green); font-weight: 700; }
+    .chk-reset { border: 1px solid var(--border); background: var(--bg-code); color: var(--text-muted); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+    .chk-reset:hover { color: var(--accent); border-color: var(--accent); }
+    .chk-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 6px; border-bottom: 1px dashed var(--border); cursor: pointer; font-size: 14px; }
+    .chk-item:last-child { border-bottom: none; }
+    .chk-item input { margin-top: 4px; accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; }
+    .chk-item.done span { text-decoration: line-through; color: var(--text-muted); }
+</style>
+
+<style id="snr-mobile-enhance">
+  /* Mobile drawer, responsive tables & floating pill navigation */
+  #snr-float-bar {
+    position: fixed;
+    right: 14px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 9500;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(18, 24, 38, 0.90);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  }
+  html[data-theme="light"] #snr-float-bar {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(2, 132, 199, 0.30);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  }
+  .snr-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text, #e6edf7);
+    background: transparent;
+    border: 1px solid var(--border, #243047);
+    border-radius: 999px;
+    padding: 6px 11px;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.2;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .snr-pill-btn:active { transform: scale(0.96); }
+  #snr-toc-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 8, 16, 0.65);
+    z-index: 8990;
+  }
+  #snr-toc-backdrop.open { display: block; }
+  img, svg { max-width: 100%; }
+  @media (max-width: 960px) {
+    html, body { overflow-x: hidden; }
+    .main, main, .wrap, .container { max-width: 100% !important; padding-left: 14px !important; padding-right: 14px !important; padding-bottom: 86px !important; }
+    .hero { padding: 18px 16px !important; border-radius: 12px !important; }
+    .hero h1 { font-size: 21px !important; }
+    h2 { font-size: 18px !important; }
+    table {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .sidebar {
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      width: 82vw !important;
+      max-width: 310px !important;
+      z-index: 9000 !important;
+      transform: translateX(-105%);
+      transition: transform 0.22s ease;
+      box-shadow: 12px 0 36px rgba(0, 0, 0, 0.45);
+      border-bottom: none !important;
+    }
+    .sidebar.mobile-toc-open { transform: translateX(0) !important; }
+    .shot-grid, .shot-grid.three, .grid-2, .grid-3, .cards { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 961px) {
+    #snr-toc-btn { display: none !important; }
+  }
+</style>
+
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div>
+        <div class="brand-title">Arif T · 全系总纲</div>
+        <div class="brand-sub">22 集精讲全融合 · 决策矩阵</div>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()">明暗切换</button>
+    </div>
+    <nav class="toc">
+      <div class="toc-group">
+        <div class="toc-heading">全景路线与核心架构</div>
+        <a href="#roadmap">1. 五册由浅入深阅读路线</a>
+        <a href="#arch">2. 双 SVG 引擎与演进地图</a>
+      </div>
+      <div class="toc-group">
+        <div class="toc-heading">原生词典与模型决策</div>
+        <a href="#lexicon">3. Arif T 原生术语全解词典</a>
+        <a href="#matrix">4. 全体系入场模型决策矩阵</a>
+      </div>
+      <div class="toc-group">
+        <div class="toc-heading">盘前清单、跨流派对照与全索引</div>
+        <a href="#checklist">5. 盘前 8 步交互检查清单</a>
+        <a href="#tri-compare">6. 三大 MSNR 体系横向对照</a>
+        <a href="#index">7. 全 22 集视频完整索引表</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="hero">
+      <div class="hero-badges">
+        <span class="badge accent">全 22 集全景总纲（YouTube 16 集 + 本地训练营 6 集）</span>
+        <span class="badge gold">双 SVG 架构图 + 全术语词典 + 交互盘前清单</span>
+        <span class="badge green">纯粹 MSNR 原生规则 · 纽约时间 EST/EDT</span>
+      </div>
+      <h1>Arif T (Mr. T) · 22 集全体系串通总纲（T8 + 2022 + 2024 + 油管 2026）</h1>
+      <p>将 Arif T 跨越 4 年演进的全部 22 支核心教学视频（YouTube 官方课 EP1–5、三大深度访谈、2024 进阶全套 6 课、Batch T8 及 2022 训练营）完整融汇：双 SVG 系统架构图、白板校验词典、全模型路由矩阵、交互盘前清单与三大 MSNR 门派横向对照表。</p>
+    </header>
+
+    <section id="roadmap">
+      <h2><span class="part-tag gold">阅读导航</span> 五册串联阅读路线（彻底解决 T8“上来就看不懂”）</h2>
+      <div class="callout gold">
+        <span class="callout-title">为什么之前看 Batch T8（Part 1–4）感觉跳步严重？</span>
+        Arif T 的现场训练营录像默认学员已精通 K 线实体与 <code>Line Chart</code> 的数学本质、<code>The Codex</code> 五大基础水平、<code>Eater Open</code> 关键位画法与 <code>Order of Time Frames</code>。如果你直接啃旧版 T8 录像，就像没学加减乘除直接做微积分。<br />
+        <strong>建议学习顺序</strong>：① 先读 <strong>《油管官方课 EP1–5 与实战访谈》</strong> 打通底层 K 线科学、五大水平与三大支柱 → ② 再读 <strong>《2024 完整进阶课（Part 1–6）》</strong> 系统掌握现行的 <code>CC</code>、<code>EQ</code>、<code>DC</code>、<code>Breakout Rule + New Price</code>、<code>H4 Gatekeeper</code> 与 <code>Direct Entry</code> → ③ 然后对照 <strong>《Batch T8 笔记》</strong> 与 <strong>《2022 训练营实战篇》</strong>（吸收 <code>The Codex</code> 趋势线联姻细节与 <code>10 Pip SL</code> 精简打法）→ ④ 最后用本总纲的<strong>决策矩阵 + 8 步盘前清单</strong>统一实战。
+      </div>
+      <table>
+        <thead>
+          <tr><th>推荐顺位</th><th>分册名称</th><th>覆盖来源</th><th>在本套体系中解决什么问题</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Step 1 · 地基</strong></td><td><code>ArifT_油管官方课EP1-5与实战访谈_学习笔记</code></td><td><code>EP 1–5 + C1–C4</code>（10 集）</td><td>补齐 K 线物理构成、<code>The Codex</code>、<code>Eater Open</code>、<code>Uncles/Cousins/Little Jerries</code> 及 2026 纯 <code>Equilibrium</code> 进化方向。</td></tr>
+          <tr><td><strong>Step 2 · 主干</strong></td><td><code>ArifT_2024完整进阶课_Part1-6_学习笔记</code></td><td><code>2024 Part 1–4 + H4/Direct</code>（6 集）</td><td>当前最完整的规则正典：<code>CC</code> 四变体、单级 <code>EQ</code>、同周期 <code>DC</code> 轮询、<code>Breakout Rule</code> 与 <code>Direct Setups</code>。</td></tr>
+          <tr><td><strong>Step 3 · 经典</strong></td><td><code>ArifT_T8完整体系_Part1-4_学习笔记</code></td><td><code>Batch T8</code> 本地 4 集</td><td>早年全量细节版：<code>Jellyfish / IC</code>、七类趋势线 <code>Codex</code>（含 <code>411 / 666 / 5A-5B / Type T</code>）、<code>Market Illusion</code>、<code>AB:BC≤3:1</code>。</td></tr>
+          <tr><td><strong>Step 4 · 极简</strong></td><td><code>ArifT_2022训练营实战篇_学习笔记</code></td><td><code>2022 Mentorship (1)-(2)</code></td><td>自营考级极简实战版：<code>W1→D1→H4→H1</code> 级联传导、<code>Wick Candle</code> 三变体、<code>10 Pip SL</code> 双线挂单。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="arch">
+      <h2><span class="part-tag">架构双图</span> 三大支柱执行引擎与 2022→2026 体系演进图</h2>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 940 315" xmlns="http://www.w3.org/2000/svg">
+          <rect width="940" height="315" fill="none"/>
+          <text x="16" y="24" fill="var(--text)" font-size="14" font-weight="700">图 1：Arif T 三大支柱闭环引擎（Pillar 1 方向 × Pillar 2 关键位/EQ 过滤 × Pillar 3 收盘/趋势线/Direct 确认）</text>
+
+          <rect x="16" y="44" width="210" height="165" rx="10" fill="var(--bg-card)" stroke="var(--accent)"/>
+          <text x="28" y="68" fill="var(--accent)" font-size="13" font-weight="700">Pillar 1 · Direction 方向</text>
+          <text x="28" y="90" fill="var(--text)" font-size="11.8">【宏观】Uncles (MN/W1/D1)</text>
+          <text x="28" y="108" fill="var(--text-muted)" font-size="11.2">• Direction Sign 1: 实体破 Classic</text>
+          <text x="28" y="126" fill="var(--text-muted)" font-size="11.2">• Sign 2: 尊重 HNS + 破 Classic</text>
+          <text x="28" y="148" fill="var(--text)" font-size="11.8">【2024 日内】双规则引擎</text>
+          <text x="28" y="166" fill="var(--text-muted)" font-size="11.2">• Breakout Rule (BO/GapBO/HNS)</text>
+          <text x="28" y="184" fill="var(--gold)" font-size="11">仅由 New Price 或 H4 Setup 终结</text>
+          <text x="28" y="200" fill="var(--text-muted)" font-size="10.8">纯 Classic = 区间双向 Ping-Pong</text>
+
+          <line x1="226" y1="126" x2="254" y2="126" stroke="var(--accent)" stroke-width="2"/>
+          <polygon points="254,126 246,121 246,131" fill="var(--accent)"/>
+
+          <rect x="256" y="44" width="224" height="165" rx="10" fill="var(--bg-card)" stroke="var(--gold)"/>
+          <text x="268" y="68" fill="var(--gold)" font-size="13" font-weight="700">Pillar 2 · 关键位与 EQ 去噪</text>
+          <text x="268" y="90" fill="var(--text)" font-size="11.8">基础五构 (Classic/BO/HNS/Gap/BHNS)</text>
+          <text x="268" y="108" fill="var(--text-muted)" font-size="11.2">• 必须存在 Miss（Gap 除外）</text>
+          <text x="268" y="126" fill="var(--text-muted)" font-size="11.2">• Eater Open 定最高权重 Key Level</text>
+          <text x="268" y="146" fill="var(--text)" font-size="11.8">2024 单级嵌套 EQ / CC</text>
+          <text x="268" y="164" fill="var(--text-muted)" font-size="11.2">• H4→H1→M30→M15 严禁跳级</text>
+          <text x="268" y="182" fill="var(--red)" font-size="11">禁忌：禁 BO to HNS 与 H4 Gap in Gap</text>
+          <text x="268" y="200" fill="var(--text-muted)" font-size="10.8">H4 为终极守门人；M15 可破 H1</text>
+
+          <line x1="480" y1="126" x2="508" y2="126" stroke="var(--gold)" stroke-width="2"/>
+          <polygon points="508,126 500,121 500,131" fill="var(--gold)"/>
+
+          <rect x="510" y="44" width="212" height="165" rx="10" fill="var(--bg-card)" stroke="var(--green)"/>
+          <text x="522" y="68" fill="var(--green)" font-size="13" font-weight="700">Pillar 3 · 入场扳机四通道</text>
+          <text x="522" y="90" fill="var(--text)" font-size="11.5">1. Maximum Override 趋势线</text>
+          <text x="522" y="106" fill="var(--text-muted)" font-size="11">同周期+连实体+等距(禁Gap)直接开枪</text>
+          <text x="522" y="124" fill="var(--text)" font-size="11.5">2. 同周期 DC 收盘（M5–H1）</text>
+          <text x="522" y="140" fill="var(--text-muted)" font-size="11">空=上影绿K；多=下影红K 收盘即进</text>
+          <text x="522" y="158" fill="var(--text)" font-size="11.5">3. Direct Setup（同一根 K）</text>
+          <text x="522" y="174" fill="var(--text-muted)" font-size="11">M15/H1 敏感生效；M30/H4 完全免疫</text>
+          <text x="522" y="194" fill="var(--purple)" font-size="11">4. H4 Setup（Direct，仅盈利期用）</text>
+
+          <line x1="722" y1="126" x2="750" y2="126" stroke="var(--green)" stroke-width="2"/>
+          <polygon points="750,126 742,121 742,131" fill="var(--green)"/>
+
+          <rect x="752" y="44" width="172" height="165" rx="10" fill="var(--bg-card)" stroke="var(--purple)"/>
+          <text x="764" y="68" fill="var(--purple)" font-size="13" font-weight="700">风控与 Runner</text>
+          <text x="764" y="90" fill="var(--text)" font-size="11.5">• 2024 常规 SL: 30 Pips</text>
+          <text x="764" y="108" fill="var(--text)" font-size="11.5">• H4 Setup: 50–60p + 半仓</text>
+          <text x="764" y="126" fill="var(--text)" font-size="11.5">• 2026: 结构动态 SL</text>
+          <text x="764" y="146" fill="var(--text-muted)" font-size="11">• 1:1 RR 推 BE，不分批平</text>
+          <text x="764" y="164" fill="var(--red)" font-size="11">• 回撤期绝不缩减手数！</text>
+          <text x="764" y="182" fill="var(--red)" font-size="11">• 08:30 EST NFP 避险</text>
+          <text x="764" y="200" fill="var(--text-muted)" font-size="10.8">禁对锁：见强反转平旧开新</text>
+
+          <rect x="16" y="226" width="908" height="72" rx="10" fill="var(--bg-card)" stroke="var(--border)"/>
+          <text x="32" y="252" fill="var(--gold)" font-size="12.5" font-weight="700">核心周期权级金字塔（谁能击穿谁 — 2024 实盘铁律）：</text>
+          <text x="32" y="274" fill="var(--text)" font-size="12">H4（终极守门人：无视低周期且短期压制 D1/W1）  &gt;  M15（2024 关键发现：可击穿 M30 与 H1！）  &gt;  M30（对 Direct Setup 免疫）  &gt;  M5（无力击穿任何上级，仅真空地带备用）</text>
+        </svg>
+        <div class="svg-caption">SVG 架构图 1：Arif T 三大支柱从定向、关键位过滤到多通道触发的完整决策流。</div>
+      </div>
+
+      <div class="svg-box">
+        <svg viewBox="0 0 940 245" xmlns="http://www.w3.org/2000/svg">
+          <rect width="940" height="245" fill="none"/>
+          <text x="16" y="24" fill="var(--text)" font-size="14" font-weight="700">图 2：Arif T 体系四大历史版本演进轴（2022 训练营 → Batch T8 → 2024 完整版 → 2025/2026 进化版）</text>
+
+          <rect x="16" y="46" width="212" height="175" rx="10" fill="var(--bg-card)" stroke="var(--green)"/>
+          <text x="28" y="70" fill="var(--green)" font-size="13" font-weight="700">2022 Mentorship</text>
+          <text x="28" y="92" fill="var(--text)" font-size="11.5">• 极简自营考级版（删 MN）</text>
+          <text x="28" y="110" fill="var(--text-muted)" font-size="11">• W1→D1→H4→H1 四级联</text>
+          <text x="28" y="128" fill="var(--text-muted)" font-size="11">• Fresh + 第 2 层以上规则</text>
+          <text x="28" y="146" fill="var(--text-muted)" font-size="11">• 仅用 H4 TL + M5 影线吞没</text>
+          <text x="28" y="164" fill="var(--text-muted)" font-size="11">• Wick Candle 三大变体</text>
+          <text x="28" y="182" fill="var(--gold)" font-size="11.5">• 双线模型 + 10 Pip SL</text>
+          <text x="28" y="204" fill="var(--text-muted)" font-size="10.5">目标：50+p / 快速通关考核</text>
+
+          <line x1="228" y1="133" x2="250" y2="133" stroke="var(--gold)" stroke-width="2"/>
+          <polygon points="250,133 243,128 243,138" fill="var(--gold)"/>
+
+          <rect x="252" y="46" width="212" height="175" rx="10" fill="var(--bg-card)" stroke="var(--gold)"/>
+          <text x="264" y="70" fill="var(--gold)" font-size="13" font-weight="700">Batch T8 + 2023</text>
+          <text x="264" y="92" fill="var(--text)" font-size="11.5">• 规则百科 + 百万翻仓版</text>
+          <text x="264" y="110" fill="var(--text-muted)" font-size="11">• 5 大 SNR + Miss / Fresh</text>
+          <text x="264" y="128" fill="var(--text-muted)" font-size="11">• One-Line (Jellyfish + IC)</text>
+          <text x="264" y="146" fill="var(--text-muted)" font-size="11">• Two-Line Marriage 趋势线</text>
+          <text x="264" y="164" fill="var(--text-muted)" font-size="11">• The Codex 七大趋势线</text>
+          <text x="264" y="182" fill="var(--gold)" font-size="11.5">• 20–30p SL + 2K破收持Runner</text>
+          <text x="264" y="204" fill="var(--text-muted)" font-size="10.5">特点：抓三触点极低浮亏</text>
+
+          <line x1="464" y1="133" x2="486" y2="133" stroke="var(--accent)" stroke-width="2"/>
+          <polygon points="486,133 479,128 479,138" fill="var(--accent)"/>
+
+          <rect x="488" y="46" width="212" height="175" rx="10" fill="var(--bg-card)" stroke="var(--accent)"/>
+          <text x="500" y="70" fill="var(--accent)" font-size="13" font-weight="700">2024 完整进阶版</text>
+          <text x="500" y="92" fill="var(--text)" font-size="11.5">• 废 Fresh/Freshest &amp; T3</text>
+          <text x="500" y="110" fill="var(--text-muted)" font-size="11">• 四类 CC + 单级严禁跳 EQ</text>
+          <text x="500" y="128" fill="var(--text-muted)" font-size="11">• 机械化 DC + 同分钟轮询</text>
+          <text x="500" y="146" fill="var(--text-muted)" font-size="11">• Breakout Rule + New Price</text>
+          <text x="500" y="164" fill="var(--text-muted)" font-size="11">• H4 Gatekeeper &amp; Direct Setup</text>
+          <text x="500" y="182" fill="var(--gold)" font-size="11.5">• 常规 30p / H4 50-60p 半仓</text>
+          <text x="500" y="204" fill="var(--text-muted)" font-size="10.5">胜率目标：稳定 65%–75%</text>
+
+          <line x1="700" y1="133" x2="722" y2="133" stroke="var(--purple)" stroke-width="2"/>
+          <polygon points="722,133 715,128 715,138" fill="var(--purple)"/>
+
+          <rect x="724" y="46" width="200" height="175" rx="10" fill="var(--bg-card)" stroke="var(--purple)"/>
+          <text x="736" y="70" fill="var(--purple)" font-size="13" font-weight="700">2025/2026 进化版</text>
+          <text x="736" y="92" fill="var(--text)" font-size="11.5">• 完全抛弃主观趋势线</text>
+          <text x="736" y="110" fill="var(--text-muted)" font-size="11">• Eater Open 统一筛选 KL</text>
+          <text x="736" y="128" fill="var(--text-muted)" font-size="11">• 纯 Equilibrium + 多重共振</text>
+          <text x="736" y="146" fill="var(--text-muted)" font-size="11">• 只专注黄金 XAUUSD 单一品种</text>
+          <text x="736" y="164" fill="var(--text-muted)" font-size="11">• Big Bank 分仓翻倍管理</text>
+          <text x="736" y="182" fill="var(--gold)" font-size="11.5">• 适配高波动的结构动态 SL</text>
+          <text x="736" y="204" fill="var(--text-muted)" font-size="10.5">核心哲学：零歧义、无对锁</text>
+        </svg>
+        <div class="svg-caption">SVG 架构图 2：Arif T 体系四年四阶段演进逻辑——如何从重趋势线逐步转向客观共振与动态止损。</div>
+      </div>
+    </section>
+
+    <section id="lexicon">
+      <h2><span class="part-tag green">词典校验</span> Arif T 原生术语与缩写全解词典（全部经白板/原声核验）</h2>
+      <table>
+        <thead>
+          <tr><th>原生术语 / 缩写</th><th>精确技术定义（核对原片白板）</th><th>白话直觉与版本说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>MA(1, Close)</code> / 折线</td><td>将每根 K 线收盘价相连的纯收盘线</td><td>画所有水平位与趋势线的唯一基准；影线只用于核对触及与 <code>Miss</code>。</td></tr>
+          <tr><td><code>The Codex</code> 五大水平</td><td><code>Classic</code>、<code>Breakout</code>、<code>HNS</code>、<code>Gap</code>、<code>BHNS</code></td><td>每日市场重复的结构基底；2024 课为防混淆暂移出 <code>BHNS</code> 改为四类基础结构。</td></tr>
+          <tr><td><code>Miss</code></td><td>结构产生后、正式回踩碰线前留出的未触及空白区间</td><td>验证 <code>Classic / Breakout / HNS / BHNS</code> 的必备安检门；<code>Gap</code> 不强制要求 <code>Miss</code>。</td></tr>
+          <tr><td><code>Gap</code></td><td><strong>两根同色 K 线之间的实体衔接水平</strong>（非价格跳空）</td><td>2024 纠偏明确“无需两柱之间存在空白缝隙”，阴阴/阳阳交界处即隐藏继续位。</td></tr>
+          <tr><td><code>Key Level / Eater Open</code></td><td>后续 K 线用 <code>Close</code> 彻底吃掉前反向柱 <code>Open</code>，标记该吞噬柱（<code>Eater</code>）的 <code>Open</code></td><td>官方 EP4 最高去噪工具；若有多根过渡柱，取真正完成收盘吞噬的 <code>Real Eater</code> 开盘价。</td></tr>
+          <tr><td><code>Uncles / Cousins / Little Jerries</code></td><td><code>MN/W1/D1</code>（长辈）/ <code>H4/H1/M30</code>（日内）/ <code>M15/M5/M1</code>（微观确认）</td><td>官方 EP5 原始幻灯片校验为 <code>Little Jerries (Special Usage)</code>，专司最后一步小周期确认。</td></tr>
+          <tr><td><code>Direction Sign 1 &amp; 2</code></td><td>Sign 1=实体破 <code>Classic</code>；Sign 2=先尊重 <code>HNS</code> 再实体破 <code>Classic</code></td><td>官方 EP5 两大方向反转判定；Sign 2 爆发力最强，适合重仓/长拿波段。</td></tr>
+          <tr><td><code>CC</code> 四变体</td><td><code>Classic CC</code>、<code>BO CC1</code>（破前反向 K）、<code>BO CC2</code>（破后同向 K）、<code>HNS CC</code>（被破的 BO CC2）</td><td>2024 版用来解决 <code>Unfresh</code> 旧水平为何仍能大幅起飞的核心工具，无需形成吞没。</td></tr>
+          <tr><td><code>EQ (Equilibrium)</code></td><td>大周期 <code>Fresh</code> + 紧邻下一级周期内部同样 <code>Fresh</code>（2024）</td><td>禁止跨级跳跃（<code>H4→H1→M30→M15</code>）；2026 版将其与多重 <code>Confluence</code> 结合成为唯一核心锚点。</td></tr>
+          <tr><td><code>DC (Double Confirmation)</code></td><td>同周期收线确认：做空看<strong>带长上影绿 K</strong>，做多看<strong>带长下影红 K</strong></td><td>仅限 <code>M5/M15/M30/H1</code> 且须同周期，配合 <code>:00/:30/:15/:05</code> 由大到小轮询，收盘瞬间市价进场。</td></tr>
+          <tr><td><code>Breakout Rule + New Price</code></td><td>影线尊重 <code>BO / Gap BO / HNS</code> 后激活引擎，沿途碾压逆向水平</td><td>左侧旧水平全部失效；仅当行情突破左侧历史后在全新区间建构的 <code>New Price</code>（或反向 <code>H4 Setup</code>）才能终止。</td></tr>
+          <tr><td><code>H4 Gatekeeper / H4 Setup</code></td><td><code>H4</code> 内部嵌 <code>H1</code>（如 <code>H4 Classic + H1 Gap</code>、<code>Gap in CC</code>）</td><td><code>H4</code> 压倒一切日内结构；仅限盈利期使用、<code>Direct Entry</code>、允许 50p 浮亏/60p SL、半仓手数；禁 <code>H4 Gap in Gap</code>。</td></tr>
+          <tr><td><code>Direct Entry Setups</code></td><td><strong>同一根 K 线</strong>在尊重一侧水平的同时打破另一侧结构（<code>Gap/HNS/BO Direct</code>）</td><td>专抓 <code>DC</code> 失效的瞬间反转；<code>M15/H1</code> 极敏感生效，<strong><code>M30/H4</code> 完全免疫</strong>；<code>M5</code> 仅真空地带使用。</td></tr>
+          <tr><td><code>Maximum Override</code></td><td>同周期、连实体、肉眼等距的 5 类趋势线（<code>T1/T2/T411/T5/T666</code>，禁 <code>Gap</code>）</td><td>凌驾于 <code>EQ/CC/DC</code> 之上的最高触发权，价格触及第 3 点直接进场。</td></tr>
+          <tr><td><code>Jellyfish / IC</code> &amp; <code>T3 / 5A-5B</code></td><td>Batch T8 专有：一线触及后 <code>IC</code> 确认、6 大趋势线含 <code>T3</code>/对称破位线</td><td>2024 课因易混或主观性已淘汰 <code>T3</code> 并用规则化 <code>DC</code> 替代早年随性的 <code>IC</code> 口诀。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="matrix">
+      <h2><span class="part-tag purple">决策路由</span> 全体系入场模型对比与场景选择矩阵</h2>
+      <table>
+        <thead>
+          <tr><th>入场模型</th><th>所属版本</th><th>触发与结构要求</th><th>止损与仓位管理</th><th>适用市场场景</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1. 趋势线 <code>Maximum Override</code></strong></td><td>T8 / 2023 / 2024</td><td>有效水平（<strong>非 <code>Gap</code></strong>）+ <strong>同周期</strong>连实体等距趋势线（<code>T1/T2/T411/T5/T666</code>），不需等 <code>EQ/CC/DC</code></td><td>早年 20–30p / 2024 30p；零浮亏特性强</td><td>需要极致精准点位与极小浮亏的日内结构。</td></tr>
+          <tr><td><strong>2. 标准 <code>DC</code>（<code>EQ / CC</code> 双重确认）</strong></td><td>2024 主力核心</td><td>合法 <code>EQ</code> 或四类 <code>CC</code>（同级下钻皆 <code>Fresh</code>）+ 同周期收出反转颜色影线 <code>DC</code> K线</td><td><code>30 Pips SL</code>，全仓单笔不加不减，<code>1:1 RR</code> 推 <code>BE</code></td><td>全天常态高胜率（<code>65%–75%</code>）主力模型。</td></tr>
+          <tr><td><strong>3. <code>Direct Entry Setups</code></strong></td><td>2024 进阶（<code>B6</code>）</td><td><strong>同一根 K 线</strong>尊重某位并破 <code>Gap / HNS左肩 / BO</code>；限 <strong><code>M15 / H1</code></strong>（避开 <code>M30/H4</code>）</td><td>标准日内止损；抓住原空头/多头陷阱瞬时爆发</td><td>捕捉 <code>DC</code> 失效反转及新闻中段二次上车。</td></tr>
+          <tr><td><strong>4. <code>H4 Setup (Gatekeeper)</code></strong></td><td>2024（<code>B3 / B5</code>）</td><td>6 种白名单 <code>H4+H1</code>（如 <code>H4 Classic+H1 Gap</code>、<code>Gap in CC</code>），禁 <code>H4 Gap in Gap</code>，<code>Direct Entry</code></td><td><strong>手数强制减半</strong> + <code>50–60 Pips SL</code>，仅盈利后做</td><td>震荡末期酝酿跨日数百至千点超级波段。</td></tr>
+          <tr><td><strong>5. 双线极简模型</strong></td><td>2022 训练营</td><td><code>W1/D1</code> 级联同向 + <code>H4/H1</code> <code>Fresh</code> 第 2 层以上（或触 D1/W1 后首 HNS）+ <code>Wick Candle</code></td><td>严格 <strong><code>10 Pip SL</code></strong> + <code>50+ Pip TP</code></td><td>自营考核快速刷高 <code>R:R</code> 达标。</td></tr>
+          <tr><td><strong>6. 纯 <code>Equilibrium + Confluence</code></strong></td><td>2026 最新版</td><td>移除一切趋势线；<code>Direction</code> 确认后筛选 <code>1–3</code> 个强共振 <code>Equilibrium</code> + 小周期确认</td><td><strong>结构动态止损</strong>（非固定死点数），<code>Big Bank</code> 分仓复利</td><td>2026 高波动黄金专精行情，零主观歧义。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="checklist">
+      <h2><span class="part-tag green">交互自检</span> Arif T 盘前 8 步铁律执行检查清单</h2>
+      <div class="chk-wrap" id="arift-checklist">
+        <div class="chk-head">
+          <div>
+            <strong>盘前风控与结构合规检视</strong>
+            <div class="chk-prog" id="chk-prog">已完成 0 / 8 项（进度自动保存）</div>
+          </div>
+          <button class="chk-reset" type="button" onclick="resetChecklist()">重置清单</button>
+        </div>
+        <label class="chk-item"><input type="checkbox" data-idx="0" /><span><strong>Step 1 · 排除新闻禁区</strong>：确认未来数小时无重大数据，尤其避开每月首个周五 <code>08:30 EST/EDT</code> 非农（NFP）发布瞬间持重仓。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="1" /><span><strong>Step 2 · 确定方向与活跃引擎</strong>：自上而下排查 <code>H4 → H1 → M30 → M15</code> 是否存在刚被尊重的 <code>Breakout Rule</code>（若已激活，只顺其方向直到出现 <code>New Price</code> 或反向 <code>H4 Setup</code>）。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="2" /><span><strong>Step 3 · 校验跨周期击穿权限</strong>：检查相邻更小周期——确认没有反向 <code>M15</code> 正在发起 <code>Breakout Rule</code> 击穿目标 <code>M30 / H1</code> 结构，且无逆向 <code>H4 Gatekeeper</code> 挡路。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="3" /><span><strong>Step 4 · 锁定唯一核心位</strong>：用纯收盘价标注结构，确认存在 <code>Miss</code>（非 <code>Gap</code>）并找到 <code>Eater Open</code> <code>Key Level</code>；若用 2024 <code>EQ</code>，确保仅下钻一级且双层皆 <code>Fresh</code>（严禁 <code>BO to HNS</code> 与 <code>H4 Gap in Gap</code>）。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="4" /><span><strong>Step 5 · 查验触发优先通道</strong>：若优先用 2024 趋势线 <code>Maximum Override</code>，须与非 <code>Gap</code> 位同周期、连实体且等距；否则耐心等待同周期 <code>DC</code> 收盘（或 2026 版在警报处观察多共振与 <code>Little Jerries</code> 确认）。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="5" /><span><strong>Step 6 · 核对 Direct 与 H4 门禁</strong>：仅在 <code>M15/H1</code> 警惕同根 K 线 <code>Direct Setup</code> 反杀（<code>M30/H4</code> 忽略）；若做 <code>H4 Setup</code>，确认账户当前处于盈利状态且手数已强制减半。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="6" /><span><strong>Step 7 · 仓位不可回撤缩水</strong>：按预设分仓规则固定风险（绝不因连亏恐惧而将固定止损额砍半），单笔一次进场，不与反方向对锁。</span></label>
+        <label class="chk-item"><input type="checkbox" data-idx="7" /><span><strong>Step 8 · 机械执行与 Runner 管理</strong>：<code>1+1=2</code> 果断触发；达 <code>1:1 RR</code> 推至保本（<code>BE</code>）；观察前方最近 <code>Decision Level</code> 仅在 2 根实体彻底收破时留底仓跑大波段。</span></label>
+      </div>
+    </section>
+
+    <section id="tri-compare">
+      <h2><span class="part-tag">全景对比</span> 三大 MSNR 核心流派横向对比（Arif T × 炼金术 × KangFx）</h2>
+      <table>
+        <thead>
+          <tr><th>比较维度</th><th>Arif T 全系（22 集）</th><th>MSNR 炼金术（Part 1–6）</th><th>KangFx（26 集完整版）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>画线物理基准</strong></td><td>蜡烛 + <code>MA(1, Close)</code>；<strong>实体画线、影线验 Miss</strong>；Key Level 取 <code>Eater Open</code></td><td>折线图 + K 线实体；区分实体突破与影线猎杀，配合 <code>OC</code></td><td><strong>绝对 Close-only</strong> 画线，影线只看拒绝与触及；<code>1 LAB / s / r / ls OCL</code></td></tr>
+          <tr><td><strong>核心方向框架</strong></td><td>早年 <code>Storyline / Sign 1-2</code>；2024 改用 <code>Breakout Rule + New Price + H4 Gatekeeper</code></td><td><code>MN → W1 → D1 → H4</code> 三层过滤 + 伦敦/纽约盘口 <code>PO3</code></td><td>严格三线状态机：<code>X Reject X → Y Break</code>（Fresh/Re-fresh）配 <code>FTFL→STFL→TTFL</code></td></tr>
+          <tr><td><strong>趋势线立场</strong></td><td>T8/2023 核心 <code>Marriage</code>；2024 升格为 <code>Maximum Override</code>；<strong>2026 完全舍弃</strong></td><td>辅助 <code>QML / SBR / RBS</code> 验证，不作强制</td><td>基本不使用主观趋势线，专注盒内水平位与 <code>50% Equilibrium</code></td></tr>
+          <tr><td><strong>精细入场扳机</strong></td><td><code>DC</code> 同周期收盘、<code>Direct Setup</code>（同根 K 破反结构）、<code>10p SL</code> 双线、2026 共振</td><td>高/中/低三档风险模型（直接挂单 / H1确认 / LTF 反转）</td><td><code>14b</code>、<code>D1W4</code>（1根破）、<code>TWM</code>、<code>Q-Top</code>、<code>Trapezoid QM</code> 与 <code>Strong FTFL</code></td></tr>
+          <tr><td><strong>风险与盈亏比哲学</strong></td><td><code>65%–75%</code> 高胜率配合 <code>Big Bank</code> 分仓翻倍；结构止损与回撤不缩手数</td><td><code>1%</code> 稳健自营风控与多级目标追踪</td><td>极致小止损（<code>50% Equilibrium</code> + Buffer）博弈高盈亏比波段</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="index">
+      <h2><span class="part-tag gold">完整索引</span> Arif T 全套 22 集视频完整知识地图</h2>
+      <table>
+        <thead>
+          <tr><th>编号 / 来源</th><th>视频 ID / 文件名</th><th>时长</th><th>收录分册</th><th>核心知识提炼</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>A1</code> · @AriffTChannel</td><td><code>Bh4i1vrIxgA</code></td><td>10:54</td><td>油管官方课卷</td><td>课程全图路线、交易心态基石与 7 位数体系开篇</td></tr>
+          <tr><td><code>A2</code> · @AriffTChannel</td><td><code>VXJhIayVH8s</code></td><td>08:12</td><td>油管官方课卷</td><td><code>Candlestick Science</code>：OHLC、Body=决策、Shadow=足迹、Line Chart 本质</td></tr>
+          <tr><td><code>A3</code> · @AriffTChannel</td><td><code>Lix1de9SHW4</code></td><td>10:31</td><td>油管官方课卷</td><td><code>The Codex</code> 五大每日重复水平（Classic/BO/HNS/Gap/BHNS）与 <code>Miss</code></td></tr>
+          <tr><td><code>A4</code> · @AriffTChannel</td><td><code>bpPf0wo3I6o</code></td><td>09:00</td><td>油管官方课卷</td><td><code>Key Levels (Decision Level)</code> 与两类 <code>Eater Open</code> 精确画法</td></tr>
+          <tr><td><code>A4_5</code> · @AriffTChannel</td><td><code>RdL5wsbMKAs</code></td><td>07:16</td><td>油管官方课卷</td><td>盈利前必经四阶段时间轴（The Phase / Learning / Experience / Mastery）</td></tr>
+          <tr><td><code>A5</code> · @AriffTChannel</td><td><code>HOGhoGf5Ho8</code></td><td>15:40</td><td>油管官方课卷</td><td><code>Uncles / Cousins / Little Jerries</code>、重构道氏理论、<code>Direction Sign 1 &amp; 2</code></td></tr>
+          <tr><td><code>C1</code> · Trading Nut</td><td><code>oVbDHmf8e2o</code></td><td>17:25</td><td>油管官方课卷</td><td>2023 Top 3 趋势线与 <code>Marriage</code> 解决裸水平 100p 浮亏痛点</td></tr>
+          <tr><td><code>C2</code> · Trading Nut</td><td><code>YphbyoYz2yc</code></td><td>58:29</td><td>油管官方课卷</td><td>£1k→£1M 核心细节：<code>1+1=2</code>、<code>Big Bank</code> 分仓、<code>20-30p SL</code>、2K收破持Runner</td></tr>
+          <tr><td><code>C3</code> · Trading Nut 2026</td><td><code>U1HfPBvW5Zo</code></td><td>33:59</td><td>油管官方课卷</td><td>2026 重大进化：废趋势线转纯 <code>Equilibrium+Confluence</code>、动态 SL、回撤不减仓</td></tr>
+          <tr><td><code>C4</code> · WTT EP.22</td><td><code>bqgztult1mA</code></td><td>09:16</td><td>油管官方课卷</td><td>黄金专一、<code>08:30 EST/EDT</code> NFP 滑点教训、极简执行与周低频精选</td></tr>
+          <tr><td><code>B1</code> · 2024 Part 1</td><td><code>MF6tUc6jPEY</code></td><td>32:25</td><td>2024 进阶卷</td><td>30%/70% 权重、胜率基准、四阶段账户准入、四大基础结构与经纪商 H4 时差</td></tr>
+          <tr><td><code>B2</code> · 2024 Part 2</td><td><code>d40K7MKqp4M</code></td><td>1:10:55</td><td>2024 进阶卷</td><td><code>Gap</code> 无需空白纠偏、四类 <code>CC</code>、单级 <code>EQ</code>（废 Fresh&amp;Freshest）、禁 <code>BO to HNS</code></td></tr>
+          <tr><td><code>B3</code> · 2024 Part 3 (实4)</td><td><code>QgbS0aztKCk</code></td><td>1:13:38</td><td>2024 进阶卷</td><td><code>DC</code> 颜色影线铁律、收盘轮询、<code>Breakout Rule + New Price</code>、<code>M15</code>破<code>H1</code>、<code>30p SL</code></td></tr>
+          <tr><td><code>B4</code> · 2024 Part 4 (实3)</td><td><code>BTOep0a0cdA</code></td><td>40:53</td><td>2024 进阶卷</td><td>废 <code>T3</code> 与 <code>BHNS</code> 教学、5 类现行趋势线、6 大绘制铁律、<code>Maximum Override</code></td></tr>
+          <tr><td><code>B5</code> · 2024 H4 Setups</td><td><code>LyuHh3dleyM</code></td><td>04:29</td><td>2024 进阶卷</td><td><code>H4 Setup</code> <code>50p</code> 常态浮亏 / <code>60p SL</code> / 半仓与加仓、禁 <code>H4 Gap in Gap</code></td></tr>
+          <tr><td><code>B6</code> · 2024 Direct</td><td><code>V0uzS1oJV-g</code></td><td>09:25</td><td>2024 进阶卷</td><td>同根 K 线三类 <code>Direct Setups</code>、<code>M15/H1</code> 生效 vs <code>M30/H4</code> 免疫、<code>M5</code> 真空规则</td></tr>
+          <tr><td><code>L1–L4</code> · 本地 Batch T8</td><td><code>part2/part1/part3/part4.mp4</code></td><td>168m</td><td>Batch T8 卷</td><td>真实顺序校准、<code>Jellyfish / IC</code>、7 类趋势线 <code>Codex</code>、<code>AB:BC≤3:1</code>、新闻冷却</td></tr>
+          <tr><td><code>L5–L6</code> · 本地 2022</td><td><code>2022 mentorship (1)-(2).mp4</code></td><td>141m</td><td>2022 实战卷</td><td><code>First Touch + Breakout</code>、<code>W1→D1→H4→H1</code> 级联、<code>Wick Candle</code>、<code>10 Pip SL</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+
+<script>
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    try {
+      localStorage.setItem('snr_theme', t);
+      localStorage.setItem('arift_theme', t);
+      localStorage.setItem('kangfx_theme', t);
+    } catch (e) {}
+  }
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  }
+  try {
+    const saved = localStorage.getItem('snr_theme') || localStorage.getItem('arift_theme') || localStorage.getItem('kangfx_theme');
+    if (saved) applyTheme(saved);
+  } catch (e) {}
+
+  const tocLinks = [...document.querySelectorAll('.toc a')];
+  const sections = tocLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (sections.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const id = '#' + en.target.id;
+          tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => io.observe(s));
+  }
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-cap');
+  const imgs = [...document.querySelectorAll('.shot-card img')];
+  let lbIdx = -1;
+  function showLb(i) {
+    if (!lb || !imgs.length) return;
+    lbIdx = (i + imgs.length) % imgs.length;
+    const im = imgs[lbIdx];
+    lbImg.src = im.src;
+    const capEl = im.parentElement.querySelector('.shot-cap');
+    lbCap.textContent = capEl ? capEl.textContent.trim().replace(/\s+/g, ' ') : '';
+    lb.classList.add('open');
+  }
+  if (lb) {
+    imgs.forEach((im, idx) => im.addEventListener('click', () => showLb(idx)));
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb || e.target === lbImg) lb.classList.remove('open');
+    });
+    const prevBtn = document.getElementById('lb-prev');
+    const nextBtn = document.getElementById('lb-next');
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIdx - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIdx + 1); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') lb.classList.remove('open');
+      if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
+      if (e.key === 'ArrowRight') showLb(lbIdx + 1);
+    });
+  }
+</script>
+
+
+<script>
+  const CHK_KEY = 'arift_checklist_v1';
+  const chks = [...document.querySelectorAll('#arift-checklist input[type="checkbox"]')];
+  const prog = document.getElementById('chk-prog');
+  function syncChecklist() {
+    const state = {};
+    let done = 0;
+    chks.forEach(c => {
+      state[c.dataset.idx] = c.checked;
+      c.closest('.chk-item').classList.toggle('done', c.checked);
+      if (c.checked) done++;
+    });
+    if (prog) prog.textContent = `已完成 ${done} / ${chks.length} 项（进度自动保存）`;
+    try { localStorage.setItem(CHK_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  try {
+    const raw = localStorage.getItem(CHK_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      chks.forEach(c => { c.checked = Boolean(saved[c.dataset.idx]); });
+    }
+  } catch (e) {}
+  chks.forEach(c => c.addEventListener('change', syncChecklist));
+  syncChecklist();
+  window.resetChecklist = function() {
+    chks.forEach(c => { c.checked = false; });
+    syncChecklist();
+  };
+</script>
+
+
+<script id="snr-mobile-script">
+(() => {
+  try {
+    const t = localStorage.getItem('snr_theme') || localStorage.getItem('arift_theme') || localStorage.getItem('kangfx_theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    const tb = document.querySelector('.theme-btn');
+    if (tb) {
+      tb.addEventListener('click', () => {
+        setTimeout(() => {
+          const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+          localStorage.setItem('snr_theme', cur);
+          localStorage.setItem('arift_theme', cur);
+          localStorage.setItem('kangfx_theme', cur);
+        }, 0);
+      });
+    }
+  } catch (e) {}
+
+  const sidebar = document.querySelector('.sidebar');
+  const bar = document.createElement('div');
+  bar.id = 'snr-float-bar';
+
+  const home = document.createElement('a');
+  home.className = 'snr-pill-btn';
+  home.href = '../index.html';
+  home.textContent = '🏠 首页';
+  bar.appendChild(home);
+
+  if (sidebar) {
+    const backdrop = document.createElement('div');
+    backdrop.id = 'snr-toc-backdrop';
+    document.body.appendChild(backdrop);
+
+    const tocBtn = document.createElement('button');
+    tocBtn.id = 'snr-toc-btn';
+    tocBtn.className = 'snr-pill-btn';
+    tocBtn.type = 'button';
+    tocBtn.textContent = '📑 目录';
+    const closeToc = () => {
+      sidebar.classList.remove('mobile-toc-open');
+      backdrop.classList.remove('open');
+    };
+    tocBtn.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('mobile-toc-open');
+      backdrop.classList.toggle('open', open);
+    });
+    backdrop.addEventListener('click', closeToc);
+    sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeToc));
+    bar.appendChild(tocBtn);
+  }
+
+  const topBtn = document.createElement('button');
+  topBtn.className = 'snr-pill-btn';
+  topBtn.type = 'button';
+  topBtn.textContent = '↑';
+  topBtn.setAttribute('aria-label', '返回顶部');
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  bar.appendChild(topBtn);
+
+  document.body.appendChild(bar);
+})();
+</script>
+
+</body>
+</html>
