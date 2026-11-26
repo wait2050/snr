@@ -10,6 +10,7 @@
 | MSNR 炼金术 (Part 1–6) | [MSNR 炼金术 · Part 1–3 基础与关键位](https://wait2050.github.io/snr/pages/alchemy-part1-3.html) | `pages/alchemy-part1-3.html` | 574 KB |
 | MSNR 炼金术 (Part 1–6) | [MSNR 炼金术 · Part 4–5 入场与风控](https://wait2050.github.io/snr/pages/alchemy-part4-5.html) | `pages/alchemy-part4-5.html` | 710 KB |
 | MSNR 炼金术 (Part 1–6) | [MSNR 炼金术 · Part 6（总结篇）](https://wait2050.github.io/snr/pages/alchemy-part6.html) | `pages/alchemy-part6.html` | 486 KB |
+| Arif T 全系 (22 集) | [Arif T · 最新完整实战教材（一册通 · 零废弃）](https://wait2050.github.io/snr/pages/arift-complete.html) | `pages/arift-complete.html` | 2.39 MB |
 | Arif T 全系 (22 集) | [Arif T · 22 集全体系串通总纲（含交互清单）](https://wait2050.github.io/snr/pages/arift-master.html) | `pages/arift-master.html` | 52 KB |
 | Arif T 全系 (22 集) | [Arif T · 油管官方课 EP1–5 与三大实战访谈](https://wait2050.github.io/snr/pages/arift-yt-official.html) | `pages/arift-yt-official.html` | 2.08 MB |
 | Arif T 全系 (22 集) | [Arif T · 2024 完整进阶体系（Part 1–4 + H4/Direct）](https://wait2050.github.io/snr/pages/arift-2024.html) | `pages/arift-2024.html` | 2.51 MB |
