@@ -11,7 +11,7 @@
 | MSNR 炼金术 (基础 + 2026新版) | [MSNR 炼金术 · Part 1–3 基础与关键位](https://wait2050.github.io/snr/pages/alchemy-part1-3.html) | `pages/alchemy-part1-3.html` | 574 KB |
 | MSNR 炼金术 (基础 + 2026新版) | [MSNR 炼金术 · Part 4–5 入场与风控](https://wait2050.github.io/snr/pages/alchemy-part4-5.html) | `pages/alchemy-part4-5.html` | 710 KB |
 | MSNR 炼金术 (基础 + 2026新版) | [MSNR 炼金术 · Part 6（总结篇）](https://wait2050.github.io/snr/pages/alchemy-part6.html) | `pages/alchemy-part6.html` | 486 KB |
-| Arif T & Freshizy 全系 | [Arif T · 最新完整实战教材（一册通 · 零废弃）](https://wait2050.github.io/snr/pages/arift-complete.html) | `pages/arift-complete.html` | 2.39 MB |
+| Arif T & Freshizy 全系 | [Arif T · 最新完整实战教材（一册通 · 零废弃）](https://wait2050.github.io/snr/pages/arift-complete.html) | `pages/arift-complete.html` | 3.67 MB |
 | Arif T & Freshizy 全系 | [Freshizy · MSNR 最新实战体系（Part 1–2 · 全 6 小时）](https://wait2050.github.io/snr/pages/freshizy-course.html) | `pages/freshizy-course.html` | 4.14 MB |
 | Arif T & Freshizy 全系 | [Arif T · 22 集全体系串通总纲（含交互清单）](https://wait2050.github.io/snr/pages/arift-master.html) | `pages/arift-master.html` | 52 KB |
 | Arif T & Freshizy 全系 | [Arif T · 油管官方课 EP1–5 与三大实战访谈](https://wait2050.github.io/snr/pages/arift-yt-official.html) | `pages/arift-yt-official.html` | 2.08 MB |
