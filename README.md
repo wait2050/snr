@@ -7,6 +7,7 @@
 | 分册类别 | 章节标题 | 页面路径 | 体积 |
 | :--- | :--- | :--- | :--- |
 | MSNR 炼金术 (基础 + 2026新版) | [Alchemist MSNR 2026 · 新版精讲与 Part 1–5 实盘复盘](https://wait2050.github.io/snr/pages/alchemist-2026.html) | `pages/alchemist-2026.html` | 2.92 MB |
+| MSNR 炼金术 (基础 + 2026新版) | [Alchemist MSNR · 1对1 私教全程精讲（3小时全录）](https://wait2050.github.io/snr/pages/alchemist-1on1.html) | `pages/alchemist-1on1.html` | 2.95 MB |
 | MSNR 炼金术 (基础 + 2026新版) | [MSNR 炼金术 · Part 1–6 全套串通总纲](https://wait2050.github.io/snr/pages/alchemy-master.html) | `pages/alchemy-master.html` | 382 KB |
 | MSNR 炼金术 (基础 + 2026新版) | [MSNR 炼金术 · Part 1–3 基础与关键位](https://wait2050.github.io/snr/pages/alchemy-part1-3.html) | `pages/alchemy-part1-3.html` | 574 KB |
 | MSNR 炼金术 (基础 + 2026新版) | [MSNR 炼金术 · Part 4–5 入场与风控](https://wait2050.github.io/snr/pages/alchemy-part4-5.html) | `pages/alchemy-part4-5.html` | 710 KB |
